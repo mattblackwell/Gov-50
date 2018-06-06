@@ -1,9 +1,9 @@
 ---
-title: Template Chapter 1
-description: This is a template chapter.
+title: Week 0
+description: Beginning R
 ---
 
-## Ex 1.1
+## R as a calculator
 
 ```yaml
 type: NormalExercise
@@ -13,17 +13,13 @@ skills: 1
 key: 2b0ae2ed07
 ```
 
-This is the assignment text. It should help provide students with the background information needed.
-The instructions that follow should be in bullet point form with clear guidance for what is expected.
+First, we'll learn how to use R as a calculator. 
 
 `@instructions`
-- Instruction 1
-- Instruction 2
-- Instruction 3
-- Instruction 4
-
-`@hint`
-- Here is the hint for this setup problem. It should get students 50% of the way to the correct answer.
+- Use the `+` sign to add 5 and 3
+- Use the `-` sign to subtract 3 from 5
+- Use the `\` to  divide 6 by 2
+- Use the `sqrt()` function to take the square root of 16
 
 `@pre_exercise_code`
 
@@ -34,29 +30,28 @@ The instructions that follow should be in bullet point form with clear guidance 
 `@sample_code`
 
 ```{r}
-# Your
-# sample
-# code
-# should
-# be
-# ideally
-# 10 lines or less,
-# with a max
-# of 16 lines.
+## Add together 5 and 3
+
+## Subtract 3 from 5
+
+## Divide 6 by 2
+
+## Take the square root of 16
+
 ```
 
 `@solution`
 
 ```{r}
-# Answer goes here
-# Make sure to match the comments with your sample code
-# to help students see the differences from solution
-# to given.
+5 + 3
+5 - 3
+6 / 2
+sqrt(16)
 ```
 
 `@sct`
 
 ```{r}
 # Update this to something more informative.
-success_msg("Some praise! Then reinforce a learning objective from the exercise.")
+success_msg("Good job!")
 ```
