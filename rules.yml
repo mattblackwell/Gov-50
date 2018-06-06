@@ -1,0 +1,13 @@
+rules:
+    course_num_chapters:
+        min: 1
+        max: 5
+    course_num_exercises:
+        min: 1
+        max: 60
+    chapter_num_exercises_chapter_1:
+        min: 1
+        max: 12
+    chapter_num_exercises_chapter_n:
+        min: 1
+        max: 16
