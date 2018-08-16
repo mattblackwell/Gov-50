@@ -237,13 +237,6 @@ Print the `world.pop` data by simply typing it into a line of code.
 `@hint`
 Just type the name of the vector you want! See Section 1.3.3 (Vectors) of Imai.
 
-`@pre_exercise_code`
-
-```{r}
-
-```
-
-
 `@sample_code`
 
 ```{r}
@@ -251,7 +244,6 @@ Just type the name of the vector you want! See Section 1.3.3 (Vectors) of Imai.
 world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 ## print the world.pop data
-
 ```
 
 `@solution`
@@ -305,7 +297,6 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 
 ## access and print the 1st and 4th value of world.pop
-
 ```
 
 `@solution`
@@ -318,7 +309,7 @@ world.pop[c(1,4)]
 `@sct`
 
 ```{r}
-ex() %>% check_output_expr("world.pop[4]") %>% check_out_expr("world.pop[c(1,4)]")
+ex() %>% check_output_expr("world.pop[4]") %>% check_output_expr("world.pop[c(1,4)]")
 success_msg("Great!")
 ```
 
@@ -365,7 +356,6 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 
 ## calculate the average value of world.pop
-
 ```
 
 `@solution`
@@ -430,7 +420,6 @@ year <-
 names(world.pop) <- 
 
 ## print out the world.pop object
-
 ```
 
 `@solution`
@@ -449,6 +438,6 @@ world.pop
 `@sct`
 
 ```{r}
-ex() %>% check_object("names(world.pop)") %>% check_equal() %>% check_output_expr("world.pop")
+ex() %>% check_object("world.pop") %>% check_equal(eq_condition = "equal") %>% check_output_expr("world.pop")
 success_msg("Good job!")
 ```
