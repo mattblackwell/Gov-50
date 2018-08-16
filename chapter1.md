@@ -621,3 +621,73 @@ UNpop
 ex() %>% check_object("UNpop") %>% check_equal() %>% check_output_expr("UNpop")
 success_msg("Awesome, you loaded your first data set into R!")
 ```
+
+---
+
+## Working with a data.frame
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: a15f6a4771   
+```
+
+
+A `data.frame` is an object in R that is basically like a spreadsheet with some number of rows and some number of columns and a name for each column. We often refer to the rows as "units" and the columns as "variables."  There are a number of ways to interact with a `data.frame` to get useful information about it. For example, if I have a `data.frame` called `mydata`, I can do the following:
+
+- `names(mydata)` - returns the column (variable) names of the data.
+- `head(mydata)` - prints the first 6 lines of the data
+- `ncol(mydata)` - returns the number of columns in the data. 
+- `nrow(mydata)` - returns the number of rows of the data. 
+- `dim(mydata)` - returns a vector of the number of rows and the number of columns (the dimension of the data). 
+- `summary(mydata)` - provides a summary of each variable in the data. 
+
+These are super useful functions Let's use some of these on the population data.
+
+
+`@instructions`
+- Output the variables names in the `UNpop` data frame. 
+- Use the `dim` function report the number of rows and columns of the data frame. 
+- Use the `summary` function to show a summary of each variable.
+
+`@hint`
+Check out Section 1.3.5 of Imai if you get stuck on these.
+
+`@pre_exercise_code`
+
+```{r}
+UNpop <- read.csv("UNpop.csv")
+```
+
+`@sample_code`
+
+```{r}
+## Print the variable names of UNpop
+
+
+## Print the dimensions of UNpop
+
+
+## Print a summary of the data in UNpop
+
+```
+
+`@solution`
+
+```{r}
+## Print the variable names of UNpop
+names(UNpop)
+
+## Print the dimensions of UNpop
+dim(UNpop)
+
+## Print a summary of the data in UNpop
+summary(UNpop)
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_output_expr("names(UNpop)") %>% check_output_expr("dim(UNpop)") %>% check_output_expr("summary(UNpop)")
+success_msg("Great job!")
+```
