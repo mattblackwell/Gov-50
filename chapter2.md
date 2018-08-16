@@ -3,6 +3,63 @@
   description: "Using R to help establish causal statements"
 ---
 
+## Exploring the resume data
+
+```yaml
+type: NormalExercise
+xp: 50
+```
+
+In this chapter, we are going to be working with the resume data from Section 2.1 of Imai. This data comes from an experiment where researchers sent fictitious resumes with different names that implied different race and gender combinations to see if potential employers were more likely to call back names associated with different racial groups and genders. 
+
+Let's first explore the data a bit. It's store as `resume`.
+
+`@intstructions`
+- Use the `head` function to show the first six lines of the `resume` data. 
+- Print out the dimension of the `resume` data. 
+- Use the `summary` function to show a summary of the data.
+
+`@hint`
+Remember that the name of the data frame is `resume`. Check back in Section 1.3.5 of QSS for a refresher on these functions. 
+
+`@pre_exercise_code`
+```{r}
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+```
+`@sample_code`
+
+```{r}
+## print the first 6 lines of the data
+
+
+## print the dimensions of the data
+
+
+## create a summary of the variables in the data
+
+```
+
+`@solution`
+
+```{r}
+## print the first 6 lines of the data
+head(resume)
+
+## print the dimensions of the data
+dim(resume)
+
+## create a summary of the variables in the data
+summary(resume)
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_output_expr("head(resume)") %>% check_output_expr("dim(resume)") %>% check_output_expr("summary(resume)")
+success_msg("Awesome, now you have a good sense of what this data looks like!")
+```
+
+
 ## Creating a cross tab
 
 ```yaml
@@ -12,13 +69,11 @@ key: 1cb8201750
 ```
 
 
-In this chapter, we are going to be working with the resume data from Section 2.1 of Imai. This data comes from an experiment where researchers sent fictitious resumes with different names that implied different race and gender combinations to see if potential employers were more likely to call back names associated with different racial groups and genders. 
 
 To help you analyze this data, you can use a cross tabulation. Cross tabulation (or contingency table) is a table that quickly summarizes categorical data. For instance, in the resume data, we have a `sex` variable that tells us whether or not the fictitious resume had a male or a female name.
 
 
 `@instructions`
-- Use the `head` function to show the first six lines of the `resume` data. 
 - Using the `table` function, create a cross tab of the `sex` and `call` variables in the resume data and assign this table to `sex.call.tab`
 - Print the resulting cross tab.
 
@@ -63,3 +118,5 @@ sex.call.tab
 ex() %>% check_output_expr("head(resume)") %>% check_object("sex.call.tab") %>% check_equal() %>% check_output_expr("sex.call.tab")
 success_msg("Awesome, that cross tab looks great!")
 ```
+
+
