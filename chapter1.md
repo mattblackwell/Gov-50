@@ -59,7 +59,7 @@ success_msg("Good job!")
 
 ---
 
-## Storing results 
+## Storing results
 
 ```yaml
 type: NormalExercise 
@@ -71,19 +71,6 @@ key: 5443ad2826
 
 
 
-`@instructions`
-
-
-`@hint`
-
-
-`@pre_exercise_code`
-
-```{r}
-
-```
-
-
 `@sample_code`
 
 ```{r}
@@ -92,7 +79,6 @@ mydiff <-
 
 ## type the name of the assigned object (mydiff) below
 ## to print out the results
-
 ```
 
 `@solution`
@@ -127,19 +113,6 @@ key: 4b3d70fe4c
 
 
 
-`@instructions`
-
-
-`@hint`
-
-
-`@pre_exercise_code`
-
-```{r}
-
-```
-
-
 `@sample_code`
 
 ```{r}
@@ -147,7 +120,7 @@ key: 4b3d70fe4c
 course <- 
 
 ## overwrite the course variable with the second phrase
-course <- 
+course <-
 ```
 
 `@solution`
@@ -165,4 +138,100 @@ course <- "learning R"
 ```{r}
 ex() %>% check_object("course") %>% check_equal()
 success_msg("You did it!")
+```
+
+---
+
+## Copying and reassigning variables
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: 23b8da0155   
+```
+
+
+When we assign an existing object to a new name we always make a copy of it.
+
+
+`@instructions`
+- Assign the value of `result` to `result2`
+- Overwrite the value of `result` with `10 - 2`
+
+`@hint`
+
+
+`@pre_exercise_code`
+
+```{r}
+result <- 8 - 2
+```
+
+`@sample_code`
+
+```{r}
+## Assign the value of "result" to "result2"
+
+## Overwrite "result"
+result <- 
+```
+
+`@solution`
+
+```{r}
+result2 <- result
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_object("result2") %>% check_equal()
+success_msg("You did it!")
+```
+
+---
+
+## Working with real data
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: 4037f23ade   
+```
+
+
+Next, we are going to start working with real data: estimates of world population (in thousands). A vector of data called `world.pop` has been loaded with this lesson. The first element is for the year 1950 up to the last element for 2010.
+
+
+`@instructions`
+Print the `world.pop` data by simply typing it into a line of code.
+
+`@hint`
+
+
+`@pre_exercise_code`
+
+```{r}
+world.pop <- read.csv("UNpop.csv")
+```
+
+`@sample_code`
+
+```{r}
+## print the world.pop data
+
+```
+
+`@solution`
+
+```{r}
+## print the world.pop data
+world.pop
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_output_expr("world.pop")
+success_msg("Great!")
 ```
