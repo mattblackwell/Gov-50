@@ -15,7 +15,7 @@ In this chapter, we are going to be working with the resume data from Section 2.
 
 Let's first explore the data a bit. It's store as `resume`.
 
-`@intstructions`
+`@instructions`
 - Use the `head` function to show the first six lines of the `resume` data. 
 - Print out the dimension of the `resume` data. 
 - Use the `summary` function to show a summary of the data.
@@ -163,12 +163,4 @@ mean(x)
 ```{r}
 ex() check_object("x") %>% check_output_expr("sm(x)")%>% check_output_expr("mean(x)")
 success_msg("Ok, great, you're logic is stone cold.")
-```
-
-## Logical values quiz
-
-```yaml
-type: MultipleChoiceExercise
-lang: r
-xp: 50
 ```
