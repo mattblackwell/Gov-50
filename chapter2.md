@@ -26,8 +26,8 @@ Remember that the name of the data frame is `resume`. Check back in Section 1.3.
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
-`@sample_code`
 
+`@sample_code`
 ```{r}
 ## print the first 6 lines of the data
 
@@ -39,8 +39,8 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 
 ```
 
-`@solution`
 
+`@solution`
 ```{r}
 ## print the first 6 lines of the data
 head(resume)
@@ -53,7 +53,6 @@ summary(resume)
 ```
 
 `@sct`
-
 ```{r}
 ex() %>% check_output_expr("head(resume)") %>% check_output_expr("dim(resume)") %>% check_output_expr("summary(resume)")
 success_msg("Awesome, now you have a good sense of what this data looks like!")
@@ -100,7 +99,6 @@ sex.call.tab <-
 ```
 
 `@solution`
-
 ```{r}
 ## print the first 6 lines of the data
 head(resume)
@@ -113,7 +111,6 @@ sex.call.tab
 ```
 
 `@sct`
-
 ```{r}
 ex() %>% check_output_expr("head(resume)") %>% check_object("sex.call.tab") %>% check_equal() %>% check_output_expr("sex.call.tab")
 success_msg("Awesome, that cross tab looks great!")
@@ -126,7 +123,6 @@ success_msg("Awesome, that cross tab looks great!")
 ```yaml
 type: NormalExercise 
 xp: 100 
-key: 1cb8201750   
 ```
 
 Pretty soon, you'll be doing more complicated subsetting in R. To do this, it's helpful to understand a special type of object in R: the **logical**. There are two values associated with this type of object: `TRUE` and `FALSE` (where the uppercase is very important). 
