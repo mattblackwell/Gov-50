@@ -8,6 +8,7 @@
 ```yaml
 type: NormalExercise
 xp: 50
+key: b3d91783a1
 ```
 
 In this chapter, we are going to be working with the resume data from Section 2.1 of Imai. This data comes from an experiment where researchers sent fictitious resumes with different names that implied different race and gender combinations to see if potential employers were more likely to call back names associated with different racial groups and genders. 
