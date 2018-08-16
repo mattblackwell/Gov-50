@@ -1,6 +1,6 @@
 ---
-  title: "Week 0"
-  description: "Beginning R"
+  title: "Introduction 1"
+  description: "An introduction to R"
 ---
 
 ## R as a calculator
@@ -22,6 +22,9 @@ First, we'll learn how to use R as a calculator.
 - Use the `-` sign to subtract 3 from 5
 - Use the `\` to  divide 6 by 2
 - Use the `sqrt()` function to take the square root of 16
+
+`@hint`
+See Section 1.3 of Imai.
 
 `@pre_exercise_code`
 
@@ -68,8 +71,21 @@ key: 5443ad2826
 ```
 
 
+You can save anything in R to an object. This is handy if you want to reuse some calculation later in your session.
 
 
+`@instructions`
+- Calculate the difference `8-1` and save it an object called `mydiff`. 
+- Type `mydiff` in the code (on its own line) to have R print the value of what's stored in `mydiff`.
+
+`@hint`
+See Section 1.3.2 of Imai.
+
+`@pre_exercise_code`
+
+```{r}
+See Section 1.3.2 of Imai. 
+```
 
 `@sample_code`
 
@@ -110,7 +126,22 @@ key: 4b3d70fe4c
 ```
 
 
+A lot of the time we'll work with numbers in R, but we will also want to use a lot of text. This text can be helpful in producing labels for plots or for labeling categorical variables.
 
+
+`@instructions`
+-  First, save the text `"social science"` to the variable `course`.
+- Next, save the text `"learning R"` to the same variable `course`.
+- Finally, print the value of `course` to the console. What do you think it will say?
+
+`@hint`
+See Section 1.3.2 in Imai.
+
+`@pre_exercise_code`
+
+```{r}
+
+```
 
 
 `@sample_code`
@@ -121,6 +152,9 @@ course <-
 
 ## overwrite the course variable with the second phrase
 course <-
+
+## print the value of course here
+
 ```
 
 `@solution`
@@ -136,7 +170,7 @@ course <- "learning R"
 `@sct`
 
 ```{r}
-ex() %>% check_object("course") %>% check_equal()
+ex() %>% check_object("course") %>% check_equal() %>% check_output_expr("course")
 success_msg("You did it!")
 ```
 
@@ -157,6 +191,9 @@ When we assign an existing object to a new name we always make a copy of it.
 `@instructions`
 - Assign the value of `result` to `result2`
 - Overwrite the value of `result` with `10 - 2`
+
+`@hint`
+See Section 1.3.2 of Imai
 
 `@pre_exercise_code`
 
@@ -204,7 +241,7 @@ Next, we are going to start working with real data: estimates of world populatio
 Print the `world.pop` data by simply typing it into a line of code.
 
 `@hint`
-
+See Section 1.3.3 of Imai.
 
 `@pre_exercise_code`
 
@@ -216,7 +253,6 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 ```{r}
 ## print the world.pop data
-
 ```
 
 `@solution`
@@ -232,51 +268,3 @@ world.pop
 ex() %>% check_output_expr("world.pop")
 success_msg("Great!")
 ```
-
----
-
-## Insert exercise title here
-
-```yaml
-type: NormalExercise 
-xp: 100 
-key: faea1b8f52   
-```
-
-
-
-
-
-`@instructions`
-
-
-`@hint`
-
-
-`@pre_exercise_code`
-
-```{r}
-
-```
-
-
-`@sample_code`
-
-```{r}
-
-```
-
-
-`@solution`
-
-```{r}
-
-```
-
-
-`@sct`
-
-```{r}
-
-```
-
