@@ -477,7 +477,6 @@ year <- seq(from=1950, to=2010, by = 10)
 
 
 ## print the modified year vector
-
 ```
 
 `@solution`
@@ -495,4 +494,60 @@ year
 ```{r}
 ex() %>% check_object("year") %>% check_equal()
 success_msg("Great job!")
+```
+
+---
+
+## Arithmetic with vectors
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: 133ae8f5a9   
+```
+
+
+What if we wanted our data in millions of people? How would we create this vector from the vector that we have? One way would be to do this manually---create a new vector using `c()` that concatenates the world population in millions of people rather than the number of people. But this is cumbersome, can't we use the vector we already have? Yes!
+
+We can apply many types of arithmetic operators such as addition, subtraction, multiplication, and division to our vector. For example, the code `x + 5` will add the number 5 to each value in the vector. In this exercise, we will create a new vector that is the world population in millions of people, which is just the total population divided by 1000.
+
+
+`@instructions`
+- Divide the `world.pop` vector by 1000 and assign it to a new vector called `pop.million`.
+- Print out the `pop.million` variable.
+
+`@hint`
+Remember to use the `/` sign to do the dividing.
+
+`@pre_exercise_code`
+
+```{r}
+world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
+```
+
+`@sample_code`
+
+```{r}
+## create the pop.million variable. 
+pop.million <- 
+
+## print out the pop.million variable
+
+```
+
+`@solution`
+
+```{r}
+## create the pop.million variable. 
+pop.million <- world.pop / 1000
+
+## print out the pop.million variable
+pop.million
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_object("pop.million") %>% check_equal() %>% check_output_expr("pop.million")
+success_msg("Great!")
 ```
