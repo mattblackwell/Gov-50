@@ -158,9 +158,6 @@ When we assign an existing object to a new name we always make a copy of it.
 - Assign the value of `result` to `result2`
 - Overwrite the value of `result` with `10 - 2`
 
-`@hint`
-
-
 `@pre_exercise_code`
 
 ```{r}
@@ -173,7 +170,7 @@ result <- 8 - 2
 ## Assign the value of "result" to "result2"
 
 ## Overwrite "result"
-result <- 
+result <-
 ```
 
 `@solution`
@@ -212,7 +209,7 @@ Print the `world.pop` data by simply typing it into a line of code.
 `@pre_exercise_code`
 
 ```{r}
-world.pop <- read.csv("UNpop.csv")
+world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 ```
 
 `@sample_code`
@@ -235,3 +232,51 @@ world.pop
 ex() %>% check_output_expr("world.pop")
 success_msg("Great!")
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: faea1b8f52   
+```
+
+
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+
+```{r}
+
+```
+
+
+`@sample_code`
+
+```{r}
+
+```
+
+
+`@solution`
+
+```{r}
+
+```
+
+
+`@sct`
+
+```{r}
+
+```
+
