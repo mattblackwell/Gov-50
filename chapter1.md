@@ -24,7 +24,7 @@ First, we'll learn how to use R as a calculator.
 - Use the `sqrt()` function to take the square root of 16
 
 `@hint`
-See Section 1.3 of Imai.
+See Section 1.3 of Imai. Be sure to write the code on a new line without a `#` in front of it.
 
 `@pre_exercise_code`
 
@@ -79,13 +79,14 @@ You can save anything in R to an object. This is handy if you want to reuse some
 - Type `mydiff` in the code (on its own line) to have R print the value of what's stored in `mydiff`.
 
 `@hint`
-See Section 1.3.2 of Imai.
+Place the difference you want after the `<-` sign. See Section 1.3.2 of Imai.
 
 `@pre_exercise_code`
 
 ```{r}
-See Section 1.3.2 of Imai. 
+
 ```
+
 
 `@sample_code`
 
@@ -135,7 +136,7 @@ A lot of the time we'll work with numbers in R, but we will also want to use a l
 - Finally, print the value of `course` to the console. What do you think it will say?
 
 `@hint`
-See Section 1.3.2 in Imai.
+Be sure to use quotes around the text you are trying to save. See Section 1.3.2 in Imai.
 
 `@pre_exercise_code`
 
@@ -165,6 +166,9 @@ course <- "social science"
 
 ## overwrite the course variable with the second phrase
 course <- "learning R"
+
+## print the value of course here
+course
 ```
 
 `@sct`
@@ -185,7 +189,7 @@ key: 23b8da0155
 ```
 
 
-When we assign an existing object to a new name we always make a copy of it.
+When we assign an existing object to a new name we always make a copy of it. This can be useful when you want it, but it also means you can lose what's in your object if you accidentally overwrite it. Here, we are going to learn about creating a copy of an object before overwriting it.
 
 
 `@instructions`
@@ -193,7 +197,7 @@ When we assign an existing object to a new name we always make a copy of it.
 - Overwrite the value of `result` with `10 - 2`
 
 `@hint`
-See Section 1.3.2 of Imai
+See Section 1.3.2 (Objects) of Imai.
 
 `@pre_exercise_code`
 
@@ -204,6 +208,9 @@ result <- 8 - 2
 `@sample_code`
 
 ```{r}
+## First result
+result <- 8 - 2
+
 ## Assign the value of "result" to "result2"
 
 ## Overwrite "result"
@@ -213,13 +220,15 @@ result <-
 `@solution`
 
 ```{r}
+result <- 8 - 2
 result2 <- result
+result <- 10-2
 ```
 
 `@sct`
 
 ```{r}
-ex() %>% check_object("result2") %>% check_equal()
+ex() %>% check_object("result2") %>% check_object("result") %>% check_equal()
 success_msg("You did it!")
 ```
 
@@ -241,7 +250,7 @@ Next, we are going to start working with real data: estimates of world populatio
 Print the `world.pop` data by simply typing it into a line of code.
 
 `@hint`
-See Section 1.3.3 of Imai.
+Just type the name of the vector you want! See Section 1.3.3 (Vectors) of Imai.
 
 `@pre_exercise_code`
 
