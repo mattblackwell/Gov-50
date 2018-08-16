@@ -1,5 +1,5 @@
 ---
-  title: "Introduction 1"
+  title: "Introduction"
   description: "An introduction to R"
 ---
 
@@ -550,4 +550,74 @@ pop.million
 ```{r}
 ex() %>% check_object("pop.million") %>% check_equal() %>% check_output_expr("pop.million")
 success_msg("Great!")
+```
+
+---
+
+## Loading Data Frames
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: a67a33d63c   
+```
+
+
+When working with real data, we will almost always load the data into R from some external file. Most often, this is some sort of CSV (comma-separated value) file with the following structure:
+
+    year, world.pop
+    1950, 2525779
+    1960, 3026003
+    1970, 3691173
+    1980, 4449049
+    1990, 5320817
+    2000, 6127700
+    2010, 6916183
+
+There are, of course, other types of data to load into R, but we will focus on CSV files in this class. These files can be read into R using the `read.csv()` function. For example, if we have a file called `data.csv` in our working directory (see Imai Section 1.3.5 for more information about working directories), we can load it into R using:
+
+    mydata <- read.csv("data.csv")
+
+Now the contents of the `data.csv` file are contained in the `mydata` object as a `data.frame`. You can think of a `data.frame` like a spreadsheet.
+
+
+`@instructions`
+- Use the `read.csv` function to load the file `UNpop.csv` into R and assign it to an object called `UNpop`.
+- Print the `UNpop` object to inspect it.
+
+`@hint`
+You might want to look at Imai Section 1.3.5 for some guidance.
+
+`@pre_exercise_code`
+
+```{r}
+
+```
+
+
+`@sample_code`
+
+```{r}
+## Load the UNpop.csv file
+UNpop <- 
+
+## Print the UNpop object
+
+```
+
+`@solution`
+
+```{r}
+## Load the UNpop.csv file
+UNpop <- read.csv("UNpop.csv")
+
+## Print the UNpop object
+UNpop
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_object("UNpop") %>% check_equal() %>% check_output_expr("UNpop")
+success_msg("Awesome, you loaded your first data set into R!")
 ```
