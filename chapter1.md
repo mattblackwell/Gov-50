@@ -532,7 +532,6 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 pop.million <- 
 
 ## print out the pop.million variable
-
 ```
 
 `@solution`
@@ -554,76 +553,6 @@ success_msg("Great!")
 
 ---
 
-## Loading Data Frames
-
-```yaml
-type: NormalExercise 
-xp: 100 
-key: a67a33d63c   
-```
-
-
-When working with real data, we will almost always load the data into R from some external file. Most often, this is some sort of CSV (comma-separated value) file with the following structure:
-
-    year, world.pop
-    1950, 2525779
-    1960, 3026003
-    1970, 3691173
-    1980, 4449049
-    1990, 5320817
-    2000, 6127700
-    2010, 6916183
-
-There are, of course, other types of data to load into R, but we will focus on CSV files in this class. These files can be read into R using the `read.csv()` function. For example, if we have a file called `data.csv` in our working directory (see Imai Section 1.3.5 for more information about working directories), we can load it into R using:
-
-    mydata <- read.csv("data.csv")
-
-Now the contents of the `data.csv` file are contained in the `mydata` object as a `data.frame`. You can think of a `data.frame` like a spreadsheet.
-
-
-`@instructions`
-- Use the `read.csv` function to load the file `UNpop.csv` into R and assign it to an object called `UNpop`.
-- Print the `UNpop` object to inspect it.
-
-`@hint`
-You might want to look at Imai Section 1.3.5 for some guidance.
-
-`@pre_exercise_code`
-
-```{r}
-
-```
-
-
-`@sample_code`
-
-```{r}
-## Load the UNpop.csv file
-UNpop <- 
-
-## Print the UNpop object
-
-```
-
-`@solution`
-
-```{r}
-## Load the UNpop.csv file
-UNpop <- read.csv("UNpop.csv")
-
-## Print the UNpop object
-UNpop
-```
-
-`@sct`
-
-```{r}
-ex() %>% check_object("UNpop") %>% check_equal() %>% check_output_expr("UNpop")
-success_msg("Awesome, you loaded your first data set into R!")
-```
-
----
-
 ## Working with a data.frame
 
 ```yaml
@@ -633,10 +562,9 @@ key: a15f6a4771
 ```
 
 
-A `data.frame` is an object in R that is basically like a spreadsheet with some number of rows and some number of columns and a name for each column. We often refer to the rows as "units" and the columns as "variables."  There are a number of ways to interact with a `data.frame` to get useful information about it. For example, if I have a `data.frame` called `mydata`, I can do the following:
+A `data.frame` is an object in R that is basically like a spreadsheet with some number of rows (units) and some number of columns (variables) and a name for each column. There are a number of ways to interact with a `data.frame` to get useful information about it. For example, if I have a `data.frame` called `mydata`, I can do the following:
 
 - `names(mydata)` - returns the column (variable) names of the data.
-- `head(mydata)` - prints the first 6 lines of the data
 - `ncol(mydata)` - returns the number of columns in the data. 
 - `nrow(mydata)` - returns the number of rows of the data. 
 - `dim(mydata)` - returns a vector of the number of rows and the number of columns (the dimension of the data). 
@@ -656,12 +584,15 @@ Check out Section 1.3.5 of Imai if you get stuck on these.
 `@pre_exercise_code`
 
 ```{r}
-UNpop <- read.csv("UNpop.csv")
+UNpop <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/24085883b6c1a2a2b3fa9b6d997efee6df7a4333/UNpop.csv")
 ```
 
 `@sample_code`
 
 ```{r}
+## Print the UNpop data frame 
+
+
 ## Print the variable names of UNpop
 
 
@@ -669,12 +600,14 @@ UNpop <- read.csv("UNpop.csv")
 
 
 ## Print a summary of the data in UNpop
-
 ```
 
 `@solution`
 
 ```{r}
+## Print the UNpop data frame 
+UNpop
+
 ## Print the variable names of UNpop
 names(UNpop)
 
@@ -688,6 +621,6 @@ summary(UNpop)
 `@sct`
 
 ```{r}
-ex() %>% check_output_expr("names(UNpop)") %>% check_output_expr("dim(UNpop)") %>% check_output_expr("summary(UNpop)")
+ex() %>% check_output_expr("UNpop") %>% check_output_expr("names(UNpop)") %>% check_output_expr("dim(UNpop)") %>% check_output_expr("summary(UNpop)")
 success_msg("Great job!")
 ```

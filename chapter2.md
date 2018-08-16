@@ -18,25 +18,22 @@ To help you analyze this data, you can use a cross tabulation. Cross tabulation 
 
 
 `@instructions`
-- Use the `head` function to show the first six lines of the resume data. 
+- Use the `head` function to show the first six lines of the `resume` data. 
 - Using the `table` function, create a cross tab of the `sex` and `call` variables in the resume data and assign this table to `sex.call.tab`
 - Print the resulting cross tab.
 
 `@hint`
-Take a look at Section 2.1 of Imai if you are struggling here.
+Take a look at Section 2.1 of Imai if you are struggling here. Also, use the `ls()` function to see what objects are in the workspace.
 
 `@pre_exercise_code`
 
 ```{r}
-
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
-
 
 `@sample_code`
 
 ```{r}
-resume <- read.csv("resume.csv")
-
 ## print the first 6 lines of the data
 
 
@@ -50,8 +47,6 @@ sex.call.tab <-
 `@solution`
 
 ```{r}
-resume <- read.csv("resume.csv")
-
 ## print the first 6 lines of the data
 head(resume)
 
@@ -67,5 +62,4 @@ sex.call.tab
 ```{r}
 ex() %>% check_output_expr("head(resume)") %>% check_object("sex.call.tab") %>% check_equal() %>% check_output_expr("sex.call.tab")
 success_msg("Awesome, that cross tab looks great!")
-
 ```
