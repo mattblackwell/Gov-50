@@ -441,3 +441,58 @@ world.pop
 ex() %>% check_object("world.pop") %>% check_equal(eq_condition = "equal") %>% check_output_expr("world.pop")
 success_msg("Good job!")
 ```
+
+---
+
+## Replacing values in a vector
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: cfa3c34349   
+```
+
+
+Indexing and subsetting allow you to access specific values in the vector, but you can also use the same syntax to replace certain values in the vector. That is we can assign a value such as `x[4] <- 50`, which would replace the fourth entry in the `x` vector with the number 50. 
+
+For example, suppose that your research assistant came running in to tell you that the earliest world population data was actually from 1945, not 1950. Here, you will fix this in your vector.
+
+
+`@instructions`
+- Replace the first entry of the `year` vector with 1945.
+
+`@hint`
+Remember to use the square brackets syntax. See 1.3.3 in Imai.
+
+`@pre_exercise_code`
+
+```{r}
+year <- seq(from=1950, to=2010, by = 10)
+```
+
+`@sample_code`
+
+```{r}
+## update the first entry of year
+
+
+## print the modified year vector
+
+```
+
+`@solution`
+
+```{r}
+## update the first entry of year
+year[1] <- 1945
+
+## print the modified year vector
+year
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_object("year") %>% check_equal()
+success_msg("Great job!")
+```
