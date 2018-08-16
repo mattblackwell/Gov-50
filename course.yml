@@ -1,4 +1,4 @@
-title: R for Gov 50
-description: Weekly R assignments for Gov 50/E-1005
+title: Quantitative Social Science in R
+description: A DataCamp guide to Quantitative Social Science by Kosuke Imai
 programming_language: r
 from: 'r-base-prod:v1.0.0'
