@@ -120,3 +120,58 @@ success_msg("Awesome, that cross tab looks great!")
 ```
 
 
+## Logical values
+
+
+```yaml
+type: NormalExercise 
+xp: 100 
+key: 1cb8201750   
+```
+
+Pretty soon, you'll be doing more complicated subsetting in R. To do this, it's helpful to understand a special type of object in R: the **logical**. There are two values associated with this type of object: `TRUE` and `FALSE` (where the uppercase is very important). 
+
+
+`@instructions`
+- Create a vector called `x` that contains two `TRUE` values and two `FALSE` values in that order. 
+- Find the sum of that vector. 
+- Find the mean of that vector. 
+
+
+`@sample_code`
+```{r}
+## creat a vector with two TRUE values and two FALSE values
+x <- 
+
+## take the sum of this vector
+
+
+## take the mean of the vector
+
+```
+
+`@solution`
+```{r}
+## creat a vector with two TRUE values and two FALSE values
+x <- c(TRUE, TRUE, FALSE, FALSE)
+
+## take the sum of this vector
+sum(x)
+
+## take the mean of the vector
+mean(x)
+```
+
+`@sct`
+```{r}
+ex() check_object("x") %>% check_output_expr("sm(x)")%>% check_output_expr("mean(x)")
+success_msg("Ok, great, you're logic is stone cold.")
+```
+
+## Logical values quiz
+
+```yaml
+type: MultipleChoiceExercise
+lang: r
+xp: 50
+```
