@@ -460,6 +460,7 @@ success_msg("You are rocking this data stuff!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: e2c2b5db47
 ```
 
 
@@ -513,6 +514,7 @@ success_msg("You just analyzed an experiment! Way to go!")
 
 ```yaml
 type: NormalExercise
+key: 91707d6e25
 ```
 
 You have seen that creating subsets can be helpful for calculating different quantities or statistics for specific subgroups in the data. When there is more than 1 or 2 subgroups of interest, however, this can be a cumbersome process. For that reason, it's helpful to know about factor variables. Basically, a factor variable is a categorical variable that takes a finite number of distinct values. 
@@ -575,6 +577,7 @@ success_msg("Fantastic, you got that factor loaded up and ready to go. Now, let'
 
 ```yaml
 type: NormalExercise
+key: d8bc3c088b
 ```
 
 Why are we learning about factors anyway? Well, they will help you complete tasks that would be a pain otherwise. Imagine that you wanted to calculate the average callback for each level of `type`. You could create a different subset for each level of `type` and then calculate the means for each one of those subsets. But that would take 8 lines of code and it would be really repetitive and prone to coding errors. 
