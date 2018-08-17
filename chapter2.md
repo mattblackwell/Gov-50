@@ -226,3 +226,58 @@ ex() %>% check_mc(correct = 1,
 ```
 
 
+---
+
+## Comparing objects
+
+```yaml
+type: NormalExercise 
+xp: 100 
+```
+
+There are several *relational operators* that allow us to compare objects in R. The most useful of these are the following:
+- `>` greater than, `>=` greater than or equal to
+- `<` less than, `<=` less than or equal to
+- `==` equal to
+- `!=` not equal to
+When we use these to compare two objects in R, we end us with a logical object. You can also compare a vector to a particular number. 
+
+`@instructions`
+- Test if 10 is greater than 5. 
+- Test which values in the vector `x` is greater than or equal to 0.
+
+`@hint`
+See Section 2.2.2 of QSS for more information on relationals. 
+
+`@pre_exercise_code`
+```{r}
+```
+
+`@sample_code`
+```{r}
+## test if 10 is greater than 5
+
+## x vector
+x <- c(-2, -1, 0, 1, 2)
+
+## test which values of x are greater than or equal to 0
+
+```
+
+`@solution`
+```{r}
+## test if 10 is greater than 5
+10 > 5
+
+# x vector
+x <- c(-2, -1, 0, 1, 2)
+
+## test which values of x are greater than or equal to 0
+x >= 0
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("10 > 5") %>% check_output_expr("x >= 0")
+success_msg("Good job!")
+```
