@@ -176,3 +176,37 @@ mean(x)
 ex() %>% check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
 success_msg("Ok, great, you're logic is stone cold.")
 ```
+
+
+## Combining logicals
+
+```yaml
+type: MultipleChoiceExercise
+lang: r
+xp: 50
+```
+
+We often combine logical statements using AND (`&`) and OR (`|`) in R. For AND statements, both expressions have to be true for the whole expression to be true:
+- `TRUE & FALSE`, `FALSE & TRUE`, and `FALSE & FALSE` are `FALSE`
+- `TRUE & TRUE` is `TRUE`
+For OR statements, either statement being true makes the whole expression true:
+- `TRUE | FALSE`, `FALSE | TRUE`, and `TRUE | TRUE` are `FALSE`
+- `FALSE | FALSE` is `FALSE`
+
+What does the following evaluate to?
+
+    (TRUE | FALSE) & TRUE
+
+`@instructions`
+- `TRUE`
+- `FALSE`
+
+`@hint`
+Evaluate the expression from left to right
+
+`@sct`
+```{r}
+msg1 = "Correct!"
+msg2 = "Incorrect. (TRUE | FALSE) evaluates to TRUE and then the expression becomes TRUE & TRUE which is TRUE."
+test_mc(2, [msg1, msg2])
+```
