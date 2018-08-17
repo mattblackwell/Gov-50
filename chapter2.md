@@ -281,3 +281,60 @@ x >= 0
 ex() %>% check_output_expr("10 > 5") %>% check_output_expr("x >= 0")
 success_msg("Good job!")
 ```
+
+---
+
+## Complex relationals
+
+```yaml
+type: NormalExercise 
+xp: 100 
+```
+
+
+In this exercise, you have the ages of a sample of 15 people, stored in the `ages` vector. We can use these relational operators to find the values of a vector that fall in a range using the same `&` and `|` operators. In particular, we can find out how many of the respondents are college-aged (18-22)
+
+`@instructions`
+- Find all the values of the `ages` that are greater than or equal to 18 and less than or equal to 22 and save this to a vector called `college.aged`. Be sure to use parentheses to separate out the two logical statements. 
+- Take the sum of the `college.aged` vector to count how many 18-22 year olds there are in the sample.
+
+
+`@hint`
+Remember that `>=` is greater than or equal to and `<=` is less than or equal to.
+
+`@pre_exercise_code`
+```{r}
+set.seed(12345)
+ages <- sample(18:65, size = 15)
+```
+
+`@sample_code`
+```{r}
+## check the value of the ages vector
+ages
+
+## find those that are 18-22
+college.aged <- 
+
+## find the number of college.aged respondents 
+
+```
+
+`@solution`
+```{r}
+## check the value of the ages vector
+ages
+
+## find those that are 18-22
+college.aged <- (ages >= 18) & (ages <= 22)
+
+## find the number of college.aged respondents 
+sum(college.aged)
+```
+
+
+`@sct`
+```{r}
+ex() %>% check_object("college.aged") %>% check_equal() %>% check_output_expr("sum(college.aged)")
+success_msg("Excellent job! This skill will be insanely useful as you move forward.")
+```
