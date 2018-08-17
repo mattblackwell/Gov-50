@@ -9,6 +9,7 @@
 ```yaml
 type: NormalExercise
 xp: 50
+key: c6d39e7f00
 ```
 
 In this chapter, you'll analyze data from the STAR project, which is a four-year randomized trial on the effectiveness of small class sizes on education performance. The `star` data frame as been loaded into your space so that you can play around with it a bit. 
@@ -64,6 +65,7 @@ ex() %>% check_output_expr("head(star)") %>% check_output_expr("dim(star)") %>% 
 ```yaml
 type: NormalExercise
 xp: 100
+key: 0c0932b9a1
 ```
 
 You probably noticed that there were some `NA` values in the data when you used the `head()` function. These are **missing values**, where the value for that unit on that variable is missing or unknown. These values pose problems when we are trying to calculate quantities of interest like means or medians because R doesn't know how to handle them. 
@@ -122,6 +124,7 @@ success_msg("Great job!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 7576d1a23f
 ```
 
 Missing values makes it difficult to calculate numerical quantities of interest like the mean, median, standard deviation, or variance. Many of these function will simply return `NA` if there is a single missing value in the vector. We can instruct many function to ignore the missing values and do their calculation on just the observed data by using the `na.rm = TRUE` argument. For instance, suppose we have `x <- c(NA, 1,2,3)`, then `mean(x)` will return `NA`, but `mean(x, na.rm = TRUE)` will return `2`. 
@@ -166,6 +169,7 @@ success_msg("Great job! Now that you are a missing data expert, let's learn how 
 ```yaml
 type: NormalExercise
 xp: 100
+key: c3e8e0975f
 ```
 
 The **barplot** is a useful way to visualize a categorical or factor variable. In this exercise, you are going to visualize the `classtype` variable, which can take on the following values:
@@ -220,6 +224,7 @@ success_msg("Awesome. The graph is looking a little unhelpful, though. Let's spr
 ```yaml
 type: NormalExercise
 xp: 100
+key: 420aefc18a
 ```
 
 The default barplot usually isn't all that readable. 
@@ -280,6 +285,7 @@ success_msg("Great job, that barplot looks a ton better.")
 ```yaml
 type: NormalExercise
 xp: 100
+key: ed0cfe6a6f
 ```
 
 For quantitative (numerical) variables, the barplot won't work because there are too many unique values. In this case, you will often use a histogram to visualize the a numerical variable. 
@@ -328,6 +334,7 @@ success_msg("Great job, though the graph is a bit spartan. Let's make it more re
 ```yaml
 type: NormalExercise
 xp: 100
+key: 18b2067b3f
 ```
 
 There are several arguments you can pass to `hist` that will improve its readability:
@@ -380,6 +387,7 @@ success_msg("Great job!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 4ae587366b
 ```
 
 We'll often want to add more information to a plot to make it even more readable. You can do that with commands that add to the current plot, such as `abline` and `text`. `abline(v=1)` will add a vertical line to the plot at the specified value (`1` in this example). `text(x,y,z)` adds a character string `z` centered at point on the (`x`, `y`) on the plot. You can use the axis labels to see where you might want to add these parts of the plot. 
@@ -442,6 +450,7 @@ success_msg("Great job!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: b9e749a845
 ```
 
 Boxplots are useful tools to visualize how the distribution of a continuous variable changes across levels of a categorical variable. There are several ways to specify a boxplot, but one of the most useful is with what R calls a formula:
