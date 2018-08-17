@@ -288,8 +288,9 @@ success_msg("Good job!")
 ## Complex relationals
 
 ```yaml
-type: NormalExercise 
-xp: 100 
+type: NormalExercise
+xp: 100
+key: dc881eb5bf
 ```
 
 
