@@ -55,6 +55,7 @@ summary(star)
 `@sct`
 ```{r}
 ex() %>% check_output_expr("head(star)") %>% check_output_expr("dim(star)") %>% check_output_expr("summary(star)")
+success_msg("Great job, let's get to work on this data!")
 ```
 
 ---
@@ -142,6 +143,10 @@ star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datas
 
 `@sample_code`
 ```{r}
+## try to calculate the mean of g4math
+
+
+## calculate the mean again, using na.rm to remove NAs
 
 ```
 
