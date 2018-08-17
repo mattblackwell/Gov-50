@@ -340,3 +340,57 @@ sum(college.aged)
 ex() %>% check_object("college.aged") %>% check_equal() %>% check_output_expr("sum(college.aged)")
 success_msg("Excellent job! This skill will be insanely useful as you move forward.")
 ```
+
+---
+
+## Subsetting based on logicals
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+In the last exercise, you used logical statements to create a vector that told us whether each entry in the `ages` vector is in the 18-22 year-old range. We can now use that information to figure out what the actual ages of the respondents in that range are. 
+
+`@instructions`
+- Use the brackets and the `college.aged` logical vector to subset `ages` to the value only between 18 and 22, inclusive. 
+- Use the `mean` function to calculate the average age of the respondents in this subset. 
+
+`@hint`
+See QSS Section 2.2.3 on Subsetting for more information on this type of problem. 
+
+`@pre_exercise_code`
+```{r}
+set.seed(12345)
+ages <- sample(18:65, size = 15)
+```
+
+`@sample_code`
+```{r}
+college.aged <- (ages >= 18) & (ages <= 22)
+college.aged
+
+## use the brackets to subset the ages vector to those who are college aged
+
+
+## calculate the average age among the college-aged in the sample
+
+```
+
+`@solution`
+```{r}
+college.aged <- (ages >= 18) & (ages <= 22)
+college.aged
+
+## use the brackets to subset the ages vector to those who are college aged
+ages[college.aged]
+
+## calculate the average age among the college-aged in the sample
+mean(ages[college.aged])
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("ages[college.aged]") %>% check_output_expr("mean(ages[college.aged])")
+success_msg("Ok, great job!")
+```
