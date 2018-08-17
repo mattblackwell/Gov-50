@@ -1,0 +1,487 @@
+---
+  title: "Measurement"
+  description: "Using R to help measure different social science concepts"
+---
+
+
+## Small class size data
+
+```yaml
+type: NormalExercise
+xp: 50
+```
+
+In this chapter, you'll analyze data from the STAR project, which is a four-year randomized trial on the effectiveness of small class sizes on education performance. The `star` data frame as been loaded into your space so that you can play around with it a bit. 
+
+`@instructions`
+- Use the `head` function on the `star` to see what the data looks like.
+- Use the `dim` function on the `star` to see what the dimensions of the data look like. 
+- Use the `summary` function on the `star` to get a sense for each variable. 
+
+`@hint`
+See Section 2.1 of QSS for more help with these functions. 
+
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## Print the first 6 rows of the data
+head(star)
+
+## find the dimensions of the data
+dim(star)
+
+## output a summary of the data
+summary(star)
+```
+
+`@solution`
+```{r}
+## Print the first 6 rows of the data
+head(star)
+
+## find the dimensions of the data
+dim(star)
+
+## output a summary of the data
+summary(star)
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("head(star)") %>% check_output_expr("dim(star)") %>% check_output_expr("summary(star)")
+```
+
+---
+
+## Handling missing data
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+You probably noticed that there were some `NA` values in the data when you used the `head()` function. These are **missing values**, where the value for that unit on that variable is missing or unknown. These values pose problems when we are trying to calculate quantities of interest like means or medians because R doesn't know how to handle them. 
+
+The first tool in your toolkit for missing data is the `is.na()` function. When you pass a vector `x` to `is.na(x)`, it will return a vector of the same length where each entry is `TRUE` if the value of `x` is `NA` and `FALSE` otherwise. Using logicals, you can easily get the reverse vector `!is.na(x)` which is `TRUE` when `x` is observed and `FALSE` when `x` is missing. 
+
+
+`@instructions`
+- Use the `is.na` and `head` functions to show whether or not the first 6 values of the `g4math` variable are missing.
+- Use the `is.na` and `sum` functions to show how many values of the `g4math` variable are missing.
+- Use the `is.na` and `mean` functions to show what proportion of the `g4math` variable is missing.
+
+`@hint`
+See Section 3.2 of QSS for more information on handling missing values. 
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## use head() to show whether or not the first 6 entries of the g4math variable are missing
+
+
+## use sum() to show how many of the g4math variables are missing
+
+
+## use mean() to show what proportion of the g4math variables are missing
+
+```
+
+`@solution`
+```{r}
+## use head() to show whether or not the first 6 entries of the g4math variable are missing
+head(is.na(star$g4math))
+
+## use sum() to show how many of the g4math variables are missing
+sum(is.na(star$g4math))
+
+## use mean() to show what proportion of the g4math variables are missing
+mean(is.na(star$g4math))
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("head(is.na(star$g4math))") %>% check_output_expr("sum(is.na(star$g4math))") %>% check_output_expr("mean(is.na(star$g4math))")
+success_msg("Great job!")
+```
+
+---
+
+## Calculating means in the fact of missing data 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+Missing values makes it difficult to calculate numerical quantities of interest like the mean, median, standard deviation, or variance. Many of these function will simply return `NA` if there is a single missing value in the vector. We can instruct many function to ignore the missing values and do their calculation on just the observed data by using the `na.rm = TRUE` argument. For instance, suppose we have `x <- c(NA, 1,2,3)`, then `mean(x)` will return `NA`, but `mean(x, na.rm = TRUE)` will return `2`. 
+
+
+`@instructions`
+- Try to calculate the `mean` of the `g4math` variable in the `star` data frame without setting `na.rm`.
+- Try to calculate the `mean` of the `g4math` variable when setting `na.rm = TRUE`.
+
+`@hint`
+See Section 3.2 of QSS for more information on handling missing values. 
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+## try to calculate the mean of g4math
+mean(star$g4math)
+
+## calculate the mean again, using na.rm to remove NAs
+mean(star$g4math, na.rm = TRUE)
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("mean(star$g4math)") %>% check_output_expr("mean(star$g4math, na.rm = TRUE)")
+success_msg("Great job! Now that you are a missing data expert, let's learn how to make some visualizations.")
+```
+---
+
+## Visualizing data: the barplot
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+The **barplot** is a useful way to visualize a categorical or factor variable. In this exercise, you are going to visualize the `classtype` variable, which can take on the following values:
+- `1` = small class
+- `2` = regular class
+- `3` = regular class with aid
+
+`@instructions`
+- Use the `table` function to create a vector of counts `classcounts` for each category of the `classtype` in the `star` data. 
+- Pass this `classcounts` vector to the `barplot` function. 
+
+`@hint`
+See Section 3.3.1 of QSS for more information on barplots.
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## creat a vector giving the counts of each category of classtype
+classcounts <- 
+
+## pass classcounts to barplot
+
+```
+
+`@solution`
+```{r}
+## creat a vector giving the counts of each category of classtype
+classcounts <- table(star$classtype)
+
+## pass classcounts to barplot
+barplot(classcounts)
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("classcounts") %>% check_equal() 
+ex() %>% check_function("barplot") %>% {
+    check_arg(., "height") %>% check_equal() 
+}
+success_msg("Awesome. The graph is looking a little unhelpful, though. Let's spruce it up.")
+```
+
+---
+
+## Making the barplot readable 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+The default barplot usually isn't all that readable. 
+
+`@instructions`
+- Create a vector of character labels called `classnames` that has the values `"Small class"` (for 1), `"Regular class"` (for 2), and `"Regular class with aid"` (for 3).
+- Call `barplot` with the heights as before, but now passing `classnames` to the `names.arg` argument and use `"Number of students"` as the `ylab` argument.
+- Make sure to separate the arguments in the barplot call with commas. 
+
+`@hint`
+See Section 3.3.1 of QSS for more information on barplots.
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## create a vector giving the counts of each category of classtype
+classcounts <- table(star$classtype)
+
+## create a vector of labels called classnames
+
+
+## pass classcounts to barplot and set the y-axis label
+
+```
+
+`@solution`
+```{r}
+## create a vector giving the counts of each category of classtype
+classcounts <- table(star$classtype)
+
+## create a vector of labels
+classnames <- c("Small class", "Regular class", "Regular class with aid")
+
+## pass classcounts to barplot and set the y-axis label
+barplot(classcounts, names.arg = classnames, ylab = "Number of students")
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("classnames") %>% check_equal() 
+ex() %>% check_function("barplot") %>% {
+    check_arg(., "height") %>% check_equal() 
+    check_arg(., "names.arg") %>% check_equal() 
+    check_arg(., "ylab") %>% check_equal() 
+}
+success_msg("Great job, that barplot looks a ton better.")
+```
+
+---
+
+## Histograms 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+For quantitative (numerical) variables, the barplot won't work because there are too many unique values. In this case, you will often use a histogram to visualize the a numerical variable. 
+
+
+`@instructions`
+- Use the `hist` function to create a histogram for the `g4math` variable in the `star` data frame. 
+- Be sure to use the `freq = FALSE` argument to the `hist` function to get the histogram. 
+- Make sure to separate the arguments in function calls with commas. 
+- Remember that you can access a particular variable using the `$`.
+
+`@hint`
+See Section 3.3.2 of QSS for more information on histograms.
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## create a histogram of g4math
+
+```
+
+`@solution`
+```{r}
+## create a histogram of g4math
+hist(star$g4math, freq = FALSE)
+```
+
+`@sct`
+```{r}
+ex() %>% check_function("hist") %>% {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "freq") %>% check_equal()
+}
+success_msg("Great job, though the graph is a bit spartan. Let's make it more readable.")
+```
+
+---
+
+## Sprucing up the histogram
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+There are several arguments you can pass to `hist` that will improve its readability:
+- `main`: a character string that prints a main title for the plot. 
+- `xlab`, `ylab`: character strings that set the labels for the x (horizontal) and y (vertical) axes 
+- `xlim`, `ylim`: numeric vectors of length 2 to specify the interval for the x and y axes. 
+
+`@instructions`
+- Create a histogram (with `freq = FALSE`) where you (a) set the y-axis to be between `0` and `0.015` using the `ylim` argument, (b) include an informative x-axis label using the `xlab` argument, and (c) include a title for the plot using the `main` argument. 
+- Make sure to separate the arguments in function calls with commas. 
+
+
+`@hint`
+See Section 3.3.2 of QSS for more information on histograms.
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## create the histogram with the specifications given in the instructions
+hist(star$g4math, freq = FALSE, xlab = "Score", main = "Distribution of fourth-grade math scores", ylim = c(0,0.015))
+```
+
+`@solution`
+```{r}
+## create the histogram with the specifications given in the instructions
+hist(star$g4math, freq = FALSE, xlab = "Score", main = "Distribution of fourth-grade math scores", ylim = c(0,0.015))
+```
+
+`@sct`
+```{r}
+ex() %>% check_function("hist") %>% {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "freq") %>% check_equal()
+    check_arg(., "xlab")
+    check_arg(., "main")
+    check_arg(., "ylim") %>% check_equal()
+}
+success_msg("Great job!")
+```
+
+---
+
+## Adding lines and text to a plot 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+We'll often want to add more information to a plot to make it even more readable. You can do that with commands that add to the current plot, such as `abline` and `text`. `abline(v=1)` will add a vertical line to the plot at the specified value (`1` in this example). `text(x,y,z)` adds a character string `z` centered at point on the (`x`, `y`) on the plot. You can use the axis labels to see where you might want to add these parts of the plot. 
+
+
+`@instructions`
+- Use the `abline` function to add a vertical line at the mean of the `g4math` variable from the `star` data. Remember, there are missing values in that variable so be sure to use the `na.rm = TRUE` argument to drop them. 
+- Use the `text` function to add the string `Average Score` to the plot at the point (750, 0.014). 
+- Make sure to separate the arguments in function calls with commas. 
+
+`@hint`
+See Section 3.3.2 of QSS for more information on histograms.
+
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+hist(star$g4math, freq = FALSE, xlab = "Score", main = "Distribution of fourth-grade math scores", ylim = c(0,0.015))
+
+## add a vertical line at the mean of the variable
+
+
+## add the text "Average Score" at the specified location
+
+```
+
+`@solution`
+```{r}
+hist(star$g4math, freq = FALSE, xlab = "Score", main = "Distribution of fourth-grade math scores", ylim = c(0,0.015))
+
+## add a vertical line at the mean of the variable
+abline(v = mean(star$g4math, na.rm = TRUE))
+
+## add the text "Average Score" at the specified location
+text(x = 750, y = 0.014, "Average Score")
+```
+
+`@sct`
+```{r}
+ex() %>% check_function("abline") %>%  {
+    check_arg(., "v") %>% check_equal()
+}
+ex() %>% check_function("text") %>%  {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "y") %>% check_equal()
+    check_arg(., "labels") %>% check_equal()
+}
+success_msg("Great job!")
+```
+
+---
+
+## Boxplots  
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+Boxplots are useful tools to visualize how the distribution of a continuous variable changes across levels of a categorical variable. There are several ways to specify a boxplot, but one of the most useful is with what R calls a formula:
+    boxplot(numvar ~ catvar, data = mydata)
+Here, the first argument are the two variables of interest separated by the tilde character `~`. On the left hand side is the numerical variable that you are investigating and on the right hand side is the categorical variable we want to subset by. The `data` argument tells the function where the function can find these variables (that is, in what data frame are these variables). 
+
+`@instructions`
+- Call the `boxplot` function using the `g4math` is the numerical variable and `classtype` is the categorical variable. Pass the `star` data frame to the `data` argument. Include an informative y-axis label with `ylab` argument. Finally, pass the `classnames` vector to the `names` argument to place labels on the boxplots. 
+
+`@hint`
+See Section 3.3.3 of QSS for more information on boxplots. 
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## labels for the class type
+classnames <- c("Small class", "Regular class", "Regular class with aid")
+
+## create a box plot with the above requirements
+
+```
+
+`@solution`
+```{r}
+classnames <- c("Small class", "Regular class", "Regular class with aid")
+boxplot(g4math ~ classtype, data = star, ylab = "Math scores", names = classnames)
+```
+
+`@sct`
+```{r}
+ex() %>% check_function("boxplot") %>% {
+    check_arg(., "formula") %>% check_equal()
+    check_arg(., "data") %>% check_equal()
+    check_arg(., "ylab")
+    check_arg(., "names") %>% check_equal()
+}
+success_msg("Great job!")
+```
