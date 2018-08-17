@@ -453,3 +453,178 @@ mean(resume.wf$call)
 ex() %>% check_object("resume.wf") %>% check_equal() %>% check_output_expr("head(resume.wf)") %>% check_output_expr("mean(resume.wf$call)")
 success_msg("You are rocking this data stuff!")
 ```
+---
+
+## Comparing means across treatment conditions
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+
+You can use the same ideas as in the last step to create a different subset of the data corresponding to white-sounding female names. Then, you can compare the average callback for the white-female names to the average callback for the black-female names. This will give you a sense of how the employer callback rate varies by racial group of the applicant for females. 
+
+`@instructions`
+- Create a subset of the `resume` data for white-sounding female names. 
+- Print the difference in means between the `call` variable in the white-sounding name subset and the black-sounding name subset. 
+
+
+`@hint`
+Remember that you can use the `-` operator to take the difference between two objects. 
+
+`@pre_exercise_code`
+```{r}
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+```
+
+`@sample_code`
+```{r}
+## create the subset for white female names
+resume.wf <- subset(resume, subset = (race == "white" & sex == "female"))
+
+## create the subset for black female names
+resume.bf <- 
+
+## compare the difference in means
+
+```
+
+`@solution`
+```{r}
+## create the subset for white female names
+resume.wf <- subset(resume, subset = (race == "white" & sex == "female"))
+
+## create the subset for black female names
+resume.bf <- subset(resume, subset = (race == "black" & sex == "female"))
+
+## compare the difference in means
+mean(resume.wf$call) - mean(resume.bf$call)
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("resume.bf") %>% check_equal() %>% check_output_expr("mean(resume.wf$call) - mean(resume.bf$call)")
+success_msg("You just analyzed an experiment! Way to go!")
+```
+---
+
+## Factor variables
+
+```yaml
+type: NormalExercise
+```
+
+You have seen that creating subsets can be helpful for calculating different quantities or statistics for specific subgroups in the data. When there is more than 1 or 2 subgroups of interest, however, this can be a cumbersome process. For that reason, it's helpful to know about factor variables. Basically, a factor variable is a categorical variable that takes a finite number of distinct values. 
+
+Any variable can be turned into a factor by calling the `as.factor()` function like so:
+
+    mydata$myvar <- as.factor(mydata$myvar)
+
+This will take the variable `myvar` and create a factor variable with levels that are observed in that variable. Most often, you will convert a character variable to a factor. 
+
+`@instructions`
+- Finish the code below that creates the `type` character variable. Fill in the last values of `race` and `sex` and add the label `WhiteMale` to this last type. 
+- Convert the `resume$type` variable to a factor variable using `as.factor()`.
+
+`@hint`
+Look at Section 2.2.5 of QSS for more information on how to work with factors. 
+
+`@pre_exercise_code`
+```{r}
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+```
+
+
+`@sample_code`
+```{r}
+## fill in the last line of code to create a character vector for the type of 
+## application that was sent
+resume$type <- NA
+resume$type[resume$race == "black" & resume$sex == "female"] <- "BlackFemale"
+resume$type[resume$race == "black" & resume$sex == "male"] <- "BlackMale"
+resume$type[resume$race == "white" & resume$sex == "female"] <- "WhiteFemale"
+resume$type[resume$race == ??? & resume$sex == ???] <- 
+
+## turn the character vector into a factor
+resume$type <- 
+```
+
+`@solution`
+```{r}
+## fill in the last line of code to create a character vector for the type of 
+## application that was sent
+resume$type <- NA
+resume$type[resume$race == "black" & resume$sex == "female"] <- "BlackFemale"
+resume$type[resume$race == "black" & resume$sex == "male"] <- "BlackMale"
+resume$type[resume$race == "white" & resume$sex == "female"] <- "WhiteFemale"
+resume$type[resume$race == "white" & resume$sex == "male"] <- "WhiteMale"
+
+## turn the character vector into a factor
+resume$type <- as.factor(resume$type)
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("resume$type") %>% check_equal()
+success_msg("Fantastic, you got that factor loaded up and ready to go. Now, let's see what you can do with it.")
+```
+---
+
+## Using factors 
+
+```yaml
+type: NormalExercise
+```
+
+Why are we learning about factors anyway? Well, they will help you complete tasks that would be a pain otherwise. Imagine that you wanted to calculate the average callback for each level of `type`. You could create a different subset for each level of `type` and then calculate the means for each one of those subsets. But that would take 8 lines of code and it would be really repetitive and prone to coding errors. 
+
+A more efficient way to do the same thing would be to use the `tapply(X, INDEX, FUN)` function, which allows you to compute a function (`FUN`) on subsets of the data (`X`) defined by a factor variable (`INDEX`). For instance, suppose we had a `grades` data frame that had student exam grades out of 100 in the `exam` variable and a factor variable called `section` that reported which section they were enrolled in. Then we could calculate the average exam score within sections as:
+
+    tapply(grades$exam, grades$section, mean)
+
+
+`@instructions`
+- Use the `table()` function on the `type` variable to see how many fictitious applications were sent out with each type of name. 
+- Use the `tapply()` function to calculate the `mean` of the `call` variable in each level of `type`. 
+
+`@hint`
+See Section 2.2.5 of QSS for help with the `tapply` function. 
+
+`@pre_exercise_code`
+```{r}
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+resume$type <- NA
+resume$type[resume$race == "black" & resume$sex == "female"] <- "BlackFemale"
+resume$type[resume$race == "black" & resume$sex == "male"] <- "BlackMale"
+resume$type[resume$race == "white" & resume$sex == "female"] <- "WhiteFemale"
+resume$type[resume$race == "white" & resume$sex == "male"] <- "WhiteMale"
+
+## turn the character vector into a factor
+resume$type <- as.factor(resume$type)
+```
+
+
+`@sample_code`
+```{r}
+## get the number of observations for each level of the type variable
+
+
+## use the `tapply` function to calculate the mean in each level of type
+
+```
+
+`@solution`
+```{r}
+## get the number of observations for each level of the type variable
+table(resume$type)
+
+## use the `tapply` function to calculate the mean in each level of type
+tapply(resume$call, resume$type, mean)
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("table(resume$type)") %>% check_output_expr("tapply(resume$call, resume$type, mean)")
+success_msg("Great work, you have the skills you need to analyze experiments and observational data!")
+```
