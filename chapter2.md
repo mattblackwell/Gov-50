@@ -403,6 +403,7 @@ success_msg("Ok, great job!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 5c0ff0cf18
 ```
 
 You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. 
