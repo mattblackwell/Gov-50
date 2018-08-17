@@ -348,6 +348,7 @@ success_msg("Excellent job! This skill will be insanely useful as you move forwa
 ```yaml
 type: NormalExercise
 xp: 100
+key: 1675a99a66
 ```
 
 In the last exercise, you used logical statements to create a vector that told us whether each entry in the `ages` vector is in the 18-22 year-old range. We can now use that information to figure out what the actual ages of the respondents in that range are. 
