@@ -131,19 +131,11 @@ Pretty soon, you'll be doing more complicated subsetting in R. To do this, it's 
 
 
 `@instructions`
-- Create a vector called `x` that contains two `TRUE` values and two `FALSE` values in that order. 
-- Find the sum of that vector. 
-- Find the mean of that vector.
+- `TRUE`
+- `FALSE`
 
 `@hint`
-Take a look at Section 2.2.1 of QSS for more help with logicals.
-
-`@pre_exercise_code`
-
-```{r}
-
-```
-
+Evaluate the expression from left to right
 
 `@sample_code`
 
@@ -170,11 +162,48 @@ sum(x)
 mean(x)
 ```
 
-`@sct`
+---
 
-```{r}
-ex() %>% check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
-success_msg("Ok, great, you're logic is stone cold.")
+## Comparing logicals
+
+```yaml
+type: MultipleChoiceExercise 
+xp: 50 
+key: 8dabfe675f   
 ```
 
 
+We often combine logical statements using AND (`&`) and OR (`|`) in R. For AND statements, both expressions have to be true for the whole expression to be true:
+- `TRUE & FALSE`, `FALSE & TRUE`, and `FALSE & FALSE` are `FALSE`
+- `TRUE & TRUE` is `TRUE`
+For OR statements, either statement being true makes the whole expression true:
+- `TRUE | FALSE`, `FALSE | TRUE`, and `TRUE | TRUE` are `FALSE`
+- `FALSE | FALSE` is `FALSE`
+
+What does the following evaluate to?
+
+    (TRUE | FALSE) & TRUE
+
+
+`@instructions`
+- `TRUE`
+- `FALSE`
+
+`@hint`
+Evaluate the expression from left to right
+
+`@pre_exercise_code`
+
+```{r}
+
+```
+
+
+`@sct`
+
+```{r}
+msg1 <- "Correct!"
+msg2 <- "Incorrect. (TRUE | FALSE) evaluates to TRUE and then the expression becomes TRUE & TRUE which is TRUE."
+ex() %>% check_mc(correct = 1,
+                  feedback_msgs = c(msg1, msg2))
+```
