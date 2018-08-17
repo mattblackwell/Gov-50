@@ -1,4 +1,4 @@
 title: Quantitative Social Science in R
-description: A DataCamp guide to Quantitative Social Science by Kosuke Imai
+description: A DataCamp companion to Quantitative Social Science by Kosuke Imai (Princeton University Press, 2017)
 programming_language: r
 from: 'r-base-prod:v1.0.0'

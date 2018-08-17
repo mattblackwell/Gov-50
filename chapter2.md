@@ -510,6 +510,55 @@ success_msg("You just analyzed an experiment! Way to go!")
 ```
 ---
 
+## Using simple conditional statements 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$name == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE. 
+
+`@instructions`
+- Use the `ifelse` function to create a new variable called `carrie` that is 1 if the resume name is `"Carrie"` and 0 otherwise. 
+- Print the first six lines of `resume` using the `head` function to see the new variable.
+
+`@hint`
+See Section 2.2.4 of QSS for help with `ifelse` and simple conditional statements.
+
+
+`@pre_exercise_code`
+```{r}
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+```
+
+
+`@sample_code`
+```{r}
+## create a new variable called carrie
+resume$carrie <- 
+
+## print the first 6 lines of the updated resume
+
+```
+
+`@solution`
+```{r}
+## create a new variable called carrie
+resume$carrie <- ifelse(resume$firstname == "Carrie", 1, 0)
+
+## print the first 6 lines of the updated resume
+head(resume)
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("resume") %>% check_equal()
+success_msg("Awesome job!")
+```
+
+---
+
 ## Factor variables
 
 ```yaml
@@ -536,6 +585,7 @@ Look at Section 2.2.5 of QSS for more information on how to work with factors.
 `@pre_exercise_code`
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+resume$carrie <- ifelse(resume$firstname == "Carrie", 1, 0)
 ```
 
 
@@ -599,6 +649,7 @@ See Section 2.2.5 of QSS for help with the `tapply` function.
 `@pre_exercise_code`
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+resume$carrie <- ifelse(resume$firstname == "Carrie", 1, 0)
 resume$type <- NA
 resume$type[resume$race == "black" & resume$sex == "female"] <- "BlackFemale"
 resume$type[resume$race == "black" & resume$sex == "male"] <- "BlackMale"
