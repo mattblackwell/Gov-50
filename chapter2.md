@@ -514,6 +514,7 @@ success_msg("You just analyzed an experiment! Way to go!")
 
 ```yaml
 type: NormalExercise
+xp: 100
 key: 91707d6e25
 ```
 
@@ -568,7 +569,7 @@ resume$type <- as.factor(resume$type)
 
 `@sct`
 ```{r}
-ex() %>% check_object("resume$type") %>% check_equal()
+ex() %>% check_object("resume") %>% check_equal()
 success_msg("Fantastic, you got that factor loaded up and ready to go. Now, let's see what you can do with it.")
 ```
 ---
@@ -577,12 +578,13 @@ success_msg("Fantastic, you got that factor loaded up and ready to go. Now, let'
 
 ```yaml
 type: NormalExercise
+xp: 100
 key: d8bc3c088b
 ```
 
-Why are we learning about factors anyway? Well, they will help you complete tasks that would be a pain otherwise. Imagine that you wanted to calculate the average callback for each level of `type`. You could create a different subset for each level of `type` and then calculate the means for each one of those subsets. But that would take 8 lines of code and it would be really repetitive and prone to coding errors. 
+Imagine that you wanted to calculate the average callback for each level of `type`. You could create a subset for each level of `type` and then use `mean` on each one of those subsets. But that would take 8 lines of code! 
 
-A more efficient way to do the same thing would be to use the `tapply(X, INDEX, FUN)` function, which allows you to compute a function (`FUN`) on subsets of the data (`X`) defined by a factor variable (`INDEX`). For instance, suppose we had a `grades` data frame that had student exam grades out of 100 in the `exam` variable and a factor variable called `section` that reported which section they were enrolled in. Then we could calculate the average exam score within sections as:
+A more efficient way to do this task would be to use the `tapply(X, INDEX, FUN)` function, which allows you to compute a function (`FUN`) on subsets of the data (`X`) defined by a factor variable (`INDEX`). For instance, suppose we had a `grades` data frame that had student exam grades out of 100 in the `exam` variable and a factor variable called `section` that reported which section they were enrolled in. Then we could calculate the average exam score within sections as:
 
     tapply(grades$exam, grades$section, mean)
 
