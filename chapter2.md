@@ -41,7 +41,6 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 
 
 ## create a summary of the variables in the data
-
 ```
 
 `@solution`
@@ -98,7 +97,6 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 sex.call.tab <- 
 
 ## print the contingency table
-
 ```
 
 `@solution`
@@ -175,6 +173,6 @@ mean(x)
 `@sct`
 
 ```{r}
-ex() check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
+ex() %>% check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
 success_msg("Ok, great, you're logic is stone cold.")
 ```
