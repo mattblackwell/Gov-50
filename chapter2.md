@@ -220,7 +220,9 @@ Evaluate the expression from left to right
 ```{r}
 msg1 <- "Correct!"
 msg2 <- "Incorrect. (TRUE | FALSE) evaluates to TRUE and then the expression becomes TRUE & TRUE which is TRUE."
-msg <- "Incorrect. Things would only be NA if there was an NA in the expression."
+msg3 <- "Incorrect. Things would only be NA if there was an NA in the expression."
 ex() %>% check_mc(correct = 1,
                   feedback_msgs = c(msg1, msg2, msg3))
 ```
+
+
