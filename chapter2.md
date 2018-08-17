@@ -231,8 +231,9 @@ ex() %>% check_mc(correct = 1,
 ## Comparing objects
 
 ```yaml
-type: NormalExercise 
-xp: 100 
+type: NormalExercise
+xp: 100
+key: 2423174d57
 ```
 
 There are several *relational operators* that allow us to compare objects in R. The most useful of these are the following:
