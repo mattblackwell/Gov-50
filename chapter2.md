@@ -131,11 +131,19 @@ Pretty soon, you'll be doing more complicated subsetting in R. To do this, it's 
 
 
 `@instructions`
-- `TRUE`
-- `FALSE`
+- Create a vector called `x` that contains two `TRUE` values and two `FALSE` values in that order. 
+- Find the sum of that vector. 
+- Find the mean of that vector.
 
 `@hint`
-Evaluate the expression from left to right
+Take a look at Section 2.2.1 of QSS for more help with logicals.
+
+`@pre_exercise_code`
+
+```{r}
+
+```
+
 
 `@sample_code`
 
@@ -160,6 +168,13 @@ sum(x)
 
 ## take the mean of the vector
 mean(x)
+```
+
+`@sct`
+
+```{r}
+ex() %>% check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
+success_msg("Ok, great, you're logic is stone cold.")
 ```
 
 ---
@@ -188,6 +203,7 @@ What does the following evaluate to?
 `@instructions`
 - `TRUE`
 - `FALSE`
+- `NA`
 
 `@hint`
 Evaluate the expression from left to right
@@ -204,6 +220,7 @@ Evaluate the expression from left to right
 ```{r}
 msg1 <- "Correct!"
 msg2 <- "Incorrect. (TRUE | FALSE) evaluates to TRUE and then the expression becomes TRUE & TRUE which is TRUE."
+msg <- "Incorrect. Things would only be NA if there was an NA in the expression."
 ex() %>% check_mc(correct = 1,
-                  feedback_msgs = c(msg1, msg2))
+                  feedback_msgs = c(msg1, msg2, msg3))
 ```
