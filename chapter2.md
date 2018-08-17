@@ -68,8 +68,6 @@ xp: 100
 key: 1cb8201750   
 ```
 
-
-
 To help you analyze this data, you can use a cross tabulation. Cross tabulation (or contingency table) is a table that quickly summarizes categorical data. For instance, in the resume data, we have a `sex` variable that tells us whether or not the fictitious resume had a male or a female name.
 
 
@@ -81,13 +79,11 @@ To help you analyze this data, you can use a cross tabulation. Cross tabulation 
 Take a look at Section 2.1 of Imai if you are struggling here. Also, use the `ls()` function to see what objects are in the workspace.
 
 `@pre_exercise_code`
-
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
 
 `@sample_code`
-
 ```{r}
 ## print the first 6 lines of the data
 
@@ -119,7 +115,6 @@ success_msg("Awesome, that cross tab looks great!")
 
 
 ## Logical values
-
 
 ```yaml
 type: NormalExercise 
@@ -161,6 +156,7 @@ mean(x)
 
 `@sct`
 ```{r}
-ex() check_object("x") %>% check_output_expr("sm(x)")%>% check_output_expr("mean(x)")
+ex() check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
 success_msg("Ok, great, you're logic is stone cold.")
 ```
+
