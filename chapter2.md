@@ -395,3 +395,60 @@ mean(ages[college.aged])
 ex() %>% check_output_expr("ages[college.aged]") %>% check_output_expr("mean(ages[college.aged])")
 success_msg("Ok, great job!")
 ```
+
+---
+
+## Subsetting a data frame
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. 
+
+
+`@instructions`
+- Use the `subset` function to create a subset of the `resume` data frame that is only female names that sound white. Save this subset as `resume.wf`
+- Use the `head` function to print out the first 6 lines of this subset. 
+- Calculate the mean of the `call` variable in this subset. 
+
+
+`@hint`
+Section 2.2.3 of QSS has more information about how to subset with conditional statements. 
+
+`@pre_exercise_code`
+```{r}
+resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
+```
+
+
+`@sample_code`
+```{r}
+## create the subset for white female names
+resume.wf <- 
+
+## print the first 6 lines of the subset
+
+
+## calculate the mean of the callback variable (call)
+
+```
+
+`@solution`
+```{r}
+## create the subset for white female names
+resume.wf <- subset(resume, subset = (race == "white" & sex == "female"))
+
+## print the first 6 lines of the subset
+head(resume.wf)
+
+## calculate the mean of the callback variable (call)
+mean(resume.wf$call)
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("resume.wf") %>% check_equal() %>% check_output_expr("head(resume.wf)") %>% check_output_expr("mean(resume.wf$call)")
+success_msg("You are rocking this data stuff!")
+```
