@@ -609,12 +609,12 @@ points(reg.class$g4math, reg.class$g4reading, col = "dodgerblue")
 ```{r}
 ex() %>% check_object("small.class") %>% check_equal()
 ex() %>% check_object("reg.class") %>% check_equal()
-ex() %>% check_function("plot") {
+ex() %>% check_function("plot") %>% {
     check_arg(., "x") %>% check_equal()
     check_arg(., "y") %>% check_equal()
     check_arg(., "col")
 }
-ex() %>% check_function("points") {
+ex() %>% check_function("points") %>% {
     check_arg(., "x") %>% check_equal()
     check_arg(., "y") %>% check_equal()
     check_arg(., "col")
@@ -664,7 +664,7 @@ points(reg.class$g4math, reg.class$g4reading, col = "dodgerblue")
 
 `@sct`
 ```{r}
-ex() %>% check_function("plot") {
+ex() %>% check_function("plot") %>% {
     check_arg(., "x") %>% check_equal()
     check_arg(., "y") %>% check_equal()
     check_arg(., "col")
@@ -672,7 +672,7 @@ ex() %>% check_function("plot") {
     check_arg(., "ylab")
     check_arg(., "main")
 }
-ex() %>% check_function("points") {
+ex() %>% check_function("points") %>% {
     check_arg(., "x") %>% check_equal()
     check_arg(., "y") %>% check_equal()
     check_arg(., "col")
