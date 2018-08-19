@@ -499,3 +499,180 @@ ex() %>% check_function("boxplot") %>% {
 }
 success_msg("Great job!")
 ```
+---
+
+## Scatter plots 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+Now you'll think more about to measure bivariate relationships---that is, the relationship between two variables. The `plot(x,y)` function will take two vectors and plot a series of points on a two-dimensional grid where the x-coordinates come from the `x` vector and the y-coordinates come from the `y` vector. For instance, `plot(x = c(1,2), y = c(3,4))` will plot two points, one at (1,3) and the other at (2,4). You will use this plot to explore the relationship between math and reading test scores in the `star` data. 
+
+`@instructions`
+- Create a scatter plot using the `plot` function with `g4math` on the x-axis and `g4reading` on the y-axis, both from the `star` data. 
+- Remember you can access a particular variable in a data frame using the `$` symbol. 
+
+`@hint`
+See Section 3.6.1 of QSS for help with scatter plots. 
+
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## produce a scatterplot of g4math on the x-axis and g4reading on the y-axis
+
+```
+
+`@solution`
+```{r}
+## produce a scatterplot of g4math on the x-axis and g4reading on the y-axis
+plot(star$g4math, star$g4reading)
+```
+
+`@sct`
+```{r}
+ex() %>% check_function("plot") %>% {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "y") %>% check_equal()
+}
+success_msg("Ok, great plot. Let's make a bit more polished.")
+```
+---
+
+## Plotting two sets of points 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+Often we want to plot certain pints differently than others. For instance, maybe you want to see how the relationship between math and reading scores differs between students in small classes versus those not in small classes. To do this, we can use subsets and the `points` function.
+
+Once you have used the `plot` function, you can add more points to the current plot by using the `points(x,y)` function, where the points are plotted very similarly to `plot`.
+
+`@instructions`
+- Create a subset of the `star` data called `small.class` which is when `classtype` is equal to 1. 
+- Create a second subset called `reg.class` which is when `classtype` is not equal to 1. 
+- Use the `plot` function to create a scatter plot of `g4math` and `g4reading` from the `small.class`. Change the color of the points by including the `col = "indianred"` argument. 
+- Use the `points` function to add the points of `g4math` and `g4reading` from the `reg.class`. Change the color of the points by including the `col = "dodgerblue"` argument. 
+- Remember that you can use `x == y` to test if `x` is equal to `y` and `x != y` to test if `x` is not equal to `y`
+
+`@hint`
+See Section 3.6.1 of QSS for help with scatter plots. 
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+```
+
+
+`@sample_code`
+```{r}
+## create a subset for small classes (classtype is 1)
+small.class <- 
+
+## create a subset for regular classes (classtype is not 1)
+reg.class <- 
+
+## use the plot command for the small.class and use one color
+
+
+## use the points command for the reg.class and use another color
+
+```
+
+`@solution`
+```{r}
+## create a subset for small classes (classtype is 1)
+small.class <- subset(star, classtype == 1)
+
+## create a subset for regular classes (classtype is not 1)
+reg.class <- subset(star, classtype != 1)
+
+## use the plot command for the small.class and use one color
+plot(small.class$g4math, small.class$g4reading, col = "indianred")
+
+## use the points command for the reg.class and use another color
+points(reg.class$g4math, reg.class$g4reading, col = "dodgerblue")
+```
+
+`@sct`
+```{r}
+ex() %>% check_object("small.class") %>% check_equal()
+ex() %>% check_object("reg.class") %>% check_equal()
+ex() %>% check_function("plot") {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "y") %>% check_equal()
+    check_arg(., "col")
+}
+ex() %>% check_function("points") {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "y") %>% check_equal()
+    check_arg(., "col")
+}
+success_msg("That looks great! ")
+```
+
+---
+
+## Finalizing your scatter plot 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+The scatter plot is looking very good, but it could use a little bit of polish. Let's add axis labels and a title. Remember that you can add these to the plot via the `xlab`, `ylab`, and `main`. Also, it's important to note that you can only add these to the initial `plot` function; adding them to the `points` or `text` or `abline` functions won't have any effect. 
+
+
+`@instructions`
+- Take the current plot and add the following arguments: `xlab`, `ylab`, and `main`. Make them informative. 
+
+`@hint`
+See Section 3.6.1 of QSS for help with scatter plots. 
+
+`@pre_exercise_code`
+```{r}
+star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
+small.class <- subset(star, classtype == 1)
+reg.class <- subset(star, classtype != 1)
+```
+
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+## add the arguments to make the plot more readable
+plot(small.class$g4math, small.class$g4reading, col = "indianred", 
+xlab = "Fourth Grad Math Scores", ylab = "Fourth Grade Reading Score", main = "Math vs Reading")
+points(reg.class$g4math, reg.class$g4reading, col = "dodgerblue")
+```
+
+`@sct`
+```{r}
+ex() %>% check_function("plot") {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "y") %>% check_equal()
+    check_arg(., "col")
+    check_arg(., "xlab")
+    check_arg(., "ylab")
+    check_arg(., "main")
+}
+ex() %>% check_function("points") {
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "y") %>% check_equal()
+    check_arg(., "col")
+}
+success_msg("What a great plot! You have really done a great job learning R for measurement.")
+```
