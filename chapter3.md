@@ -506,6 +506,7 @@ success_msg("Great job!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 7d90818f54
 ```
 
 Now you'll think more about to measure bivariate relationships---that is, the relationship between two variables. The `plot(x,y)` function will take two vectors and plot a series of points on a two-dimensional grid where the x-coordinates come from the `x` vector and the y-coordinates come from the `y` vector. For instance, `plot(x = c(1,2), y = c(3,4))` will plot two points, one at (1,3) and the other at (2,4). You will use this plot to explore the relationship between math and reading test scores in the `star` data. 
@@ -551,6 +552,7 @@ success_msg("Ok, great plot. Let's make a bit more polished.")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 25875de2e9
 ```
 
 Often we want to plot certain pints differently than others. For instance, maybe you want to see how the relationship between math and reading scores differs between students in small classes versus those not in small classes. To do this, we can use subsets and the `points` function.
@@ -627,6 +629,7 @@ success_msg("That looks great! ")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 6effc5be0f
 ```
 
 The scatter plot is looking very good, but it could use a little bit of polish. Let's add axis labels and a title. Remember that you can add these to the plot via the `xlab`, `ylab`, and `main`. Also, it's important to note that you can only add these to the initial `plot` function; adding them to the `points` or `text` or `abline` functions won't have any effect. 
