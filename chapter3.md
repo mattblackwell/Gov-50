@@ -651,7 +651,9 @@ reg.class <- subset(star, classtype != 1)
 
 `@sample_code`
 ```{r}
-
+## add the arguments to make the plot more readable
+plot(small.class$g4math, small.class$g4reading, col = "indianred")
+points(reg.class$g4math, reg.class$g4reading, col = "dodgerblue")
 ```
 
 `@solution`
