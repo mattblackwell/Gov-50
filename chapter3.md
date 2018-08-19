@@ -557,11 +557,10 @@ key: 25875de2e9
 
 Often we want to plot certain pints differently than others. For instance, maybe you want to see how the relationship between math and reading scores differs between students in small classes versus those not in small classes. To do this, we can use subsets and the `points` function.
 
-Once you have used the `plot` function, you can add more points to the current plot by using the `points(x,y)` function, where the points are plotted very similarly to `plot`.
+After using the `plot` function, you can add more points to the current plot by using the `points(x,y)` function, where the points are plotted very similarly to `plot`.
 
 `@instructions`
-- Create a subset of the `star` data called `small.class` which is when `classtype` is equal to 1. 
-- Create a second subset called `reg.class` which is when `classtype` is not equal to 1. 
+- Create a subset of the `star` data called `small.class` which is when `classtype` is equal to 1. Create a second subset called `reg.class` which is when `classtype` is not equal to 1. 
 - Use the `plot` function to create a scatter plot of `g4math` and `g4reading` from the `small.class`. Change the color of the points by including the `col = "indianred"` argument. 
 - Use the `points` function to add the points of `g4math` and `g4reading` from the `reg.class`. Change the color of the points by including the `col = "dodgerblue"` argument. 
 - Remember that you can use `x == y` to test if `x` is equal to `y` and `x != y` to test if `x` is not equal to `y`
