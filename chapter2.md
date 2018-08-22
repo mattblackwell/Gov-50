@@ -14,7 +14,7 @@ key: b3d91783a1
 
 In this chapter, we are going to be working with the resume data from Section 2.1 of Imai. This data comes from an experiment where researchers sent fictitious resumes with different names that implied different race and gender combinations to see if potential employers were more likely to call back names associated with different racial groups and genders. 
 
-Let's first explore the data a bit. It's store as `resume`.
+Let's first explore the data a bit. It's stored as `resume`.
 
 
 `@instructions`
@@ -41,6 +41,7 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 
 
 ## create a summary of the variables in the data
+
 ```
 
 `@solution`
@@ -97,6 +98,7 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 sex.call.tab <- 
 
 ## print the contingency table
+
 ```
 
 `@solution`
@@ -155,6 +157,7 @@ x <-
 
 
 ## take the mean of the vector
+
 ```
 
 `@solution`
@@ -294,11 +297,11 @@ key: dc881eb5bf
 ```
 
 
-In this exercise, you have the ages of a sample of 15 people, stored in the `ages` vector. We can use these relational operators to find the values of a vector that fall in a range using the same `&` and `|` operators. In particular, we can find out how many of the respondents are college-aged (18-22)
+In this exercise, you have the ages of a sample of 15 people, stored in the `ages` vector. We can use these relational operators to create a logical vector which indicates which ages fall within a specific range. In particular, we can find out which respondents are college-aged (18-22)
 
 `@instructions`
-- Find all the values of the `ages` that are greater than or equal to 18 and less than or equal to 22 and save this to a vector called `college.aged`. Be sure to use parentheses to separate out the two logical statements. 
-- Take the sum of the `college.aged` vector to count how many 18-22 year olds there are in the sample.
+- Create a logical vector, called `college.aged`, which indicates which observations in `ages` are greater than or equal to 18 and less than or equal to 22. Be sure to use parentheses to separate out the two logical statements. 
+- Take the sum of the `college.aged` vector to determine how many 18-22 year olds there are in the sample.
 
 
 `@hint`
@@ -406,7 +409,7 @@ xp: 100
 key: 5c0ff0cf18
 ```
 
-You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. 
+You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. For this exercise, we will use the `resume` data frame made up of the variables `firstname`, `sex`,       `race`, and `call`.
 
 
 `@instructions`
@@ -487,7 +490,7 @@ resume.wf <- subset(resume, subset = (race == "white" & sex == "female"))
 ## create the subset for black female names
 resume.bf <- 
 
-## compare the difference in means
+## calculate the difference in callback means
 
 ```
 
@@ -667,7 +670,7 @@ resume$type <- as.factor(resume$type)
 ## get the number of observations for each level of the type variable
 
 
-## use the `tapply` function to calculate the mean in each level of type
+## use the `tapply` function to calculate the mean callback for each level of type
 
 ```
 

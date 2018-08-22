@@ -2,7 +2,7 @@
 
 **Course Description**
 
-This course will help guide students through the material in *Quantitative Social Science* by Kosuke Imai (Princeton University Pres, 2017). It provides guided R exercises to help practice the tools shown in QSS. 
+This course will help guide students through the material in *Quantitative Social Science* by Kosuke Imai (Princeton University Press, 2017). It provides guided R exercises to help practice the tools shown in QSS. 
 
 **Learning Objectives**
 
