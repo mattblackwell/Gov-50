@@ -9,6 +9,7 @@
 ```yaml
 type: NormalExercise
 xp: 100
+key: b2c4ba8c3b
 ```
 
 It's often useful to tell R to execute a bit of code multiple times. In programming, this is called *iteration* and it is used extensively in statistical (and non-statistical) programming. One of the most used types of iteration is the for loop. A for loop will execute a set of commands (called the *body*) for a set number of iterations, changing the value of one variable in each iteration. In R, we set up the for loop a header, telling R what variable name you want to change over iterations of the loop and what values you want that variable to take:
