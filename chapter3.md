@@ -32,13 +32,13 @@ star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datas
 `@sample_code`
 ```{r}
 ## Print the first 6 rows of the data
-head(star)
+
 
 ## find the dimensions of the data
-dim(star)
+
 
 ## output a summary of the data
-summary(star)
+
 ```
 
 `@solution`
@@ -71,11 +71,11 @@ key: 0c0932b9a1
 
 You probably noticed that there were some `NA` values in the data when you used the `head()` function. These are **missing values**, where the value for that unit on that variable is missing or unknown. These values pose problems when we are trying to calculate quantities of interest like means or medians because R doesn't know how to handle them. 
 
-The first tool in your toolkit for missing data is the `is.na()` function. When you pass a vector `x` to `is.na(x)`, it will return a vector of the same length where each entry is `TRUE` if the value of `x` is `NA` and `FALSE` otherwise. Using logicals, you can easily get the reverse vector `!is.na(x)` which is `TRUE` when `x` is observed and `FALSE` when `x` is missing. 
+The first tool in your toolkit for missing data is the `is.na()` function. When you pass a vector `x` to `is.na(x)`, it will return a vector of the same length where each entry is `TRUE` if the value of `x` is `NA` and `FALSE` otherwise. Using logicals, you can easily get the opposite vector `!is.na(x)` which is `TRUE` when `x` is observed and `FALSE` when `x` is missing. 
 
 
 `@instructions`
-- Use the `is.na` and `head` functions to show whether or not the first 6 values of the `g4math` variable are missing.
+- Use the `is.na` and `head` functions to show whether or not the first 6 values of the `g4math` variable from the `star` data frame are missing.
 - Use the `is.na` and `sum` functions to show how many values of the `g4math` variable are missing.
 - Use the `is.na` and `mean` functions to show what proportion of the `g4math` variable is missing.
 
@@ -177,7 +177,7 @@ xp: 100
 key: c3e8e0975f
 ```
 
-The **barplot** is a useful way to visualize a categorical or factor variable. In this exercise, you are going to visualize the `classtype` variable, which can take on the following values:
+The **barplot** is a useful way to visualize a categorical or factor variable. In this exercise, you are going to visualize the `classtype` variable from the `star` data frame, which can take on the following values:
 - `1` = small class
 - `2` = regular class
 - `3` = regular class with aid
@@ -364,7 +364,7 @@ star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datas
 `@sample_code`
 ```{r}
 ## create the histogram with the specifications given in the instructions
-hist(star$g4math, freq = FALSE, xlab = "Score", main = "Distribution of fourth-grade math scores", ylim = c(0,0.015))
+
 ```
 
 `@solution`
@@ -479,7 +479,7 @@ star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datas
 ## labels for the class type
 classnames <- c("Small class", "Regular class", "Regular class with aid")
 
-## create a box plot with the above requirements
+## create a box plot with the characteristics specified in the instructions
 
 ```
 
