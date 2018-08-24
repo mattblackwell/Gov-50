@@ -57,6 +57,8 @@ ex() %>% check_for() %>% {
 success_msg("Good job, loops are really tricky subjects and you've implemented one!")
 ```
 
+---
+
 ## Modifying a loop
 
 ```yaml
@@ -101,3 +103,4 @@ ex() %>% check_for() %>% {
 }
 success_msg("Awesome!")
 ```
+
