@@ -642,6 +642,7 @@ success_msg("Great job!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 414f6ff062
 ```
 
 You'll often need to access different parts of a data frame to use in other commands. For instance, maybe you want to take the mean of a column of the data frame or maybe you want to see all of the data for the 4th unit. Either way, we'll need to know how to subset the data frame. To select a particular variable from the data frame, you can use the `$` operator. So `mydata$myvar` will be a vector of just the `myvar` column of the `mydata` data frame. 
@@ -692,6 +693,7 @@ success_msg("Great! Now, let's learn another way to subset data frames.")
 ```yaml
 type: NormalExercise
 xp: 100
+key: 5f1c815862
 ```
 
 
