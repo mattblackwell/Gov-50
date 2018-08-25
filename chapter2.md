@@ -357,7 +357,7 @@ key: 1675a99a66
 In the last exercise, you used logical statements to create a vector that told us whether each entry in the `ages` vector is in the 18-22 year-old range. We can now use that information to figure out what the actual ages of the respondents in that range are. 
 
 `@instructions`
-- Use the brackets and the `college.aged` logical vector to subset `ages` to the value only between 18 and 22, inclusive. 
+- Use the brackets and the `college.aged` logical vector that has already been created to subset `ages` to the value only between 18 and 22, inclusive. 
 - Use the `mean` function to calculate the average age of the respondents in this subset. 
 
 `@hint`
@@ -371,8 +371,8 @@ ages <- sample(18:65, size = 15)
 
 `@sample_code`
 ```{r}
+## here's the college.aged logical vector
 college.aged <- (ages >= 18) & (ages <= 22)
-college.aged
 
 ## use the brackets to subset the ages vector to those who are college aged
 
@@ -383,8 +383,8 @@ college.aged
 
 `@solution`
 ```{r}
+## here's the college.aged logical vector
 college.aged <- (ages >= 18) & (ages <= 22)
-college.aged
 
 ## use the brackets to subset the ages vector to those who are college aged
 ages[college.aged]
@@ -521,10 +521,10 @@ xp: 100
 key: bfa582b1b6
 ```
 
-What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$name == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE. 
+What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$firstname == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE. 
 
 `@instructions`
-- Use the `ifelse` function to create a new variable called `carrie` that is 1 if the resume name is `"Carrie"` and 0 otherwise. 
+- Use the `ifelse` function to create a new variable called `carrie` that is 1 if the resume name (`firstname`) is `"Carrie"` and 0 otherwise. 
 - Print the first six lines of `resume` using the `head` function to see the new variable.
 
 `@hint`
