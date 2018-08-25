@@ -65,6 +65,7 @@ success_msg("Good job, loops are really tricky subjects and you've implemented o
 ```yaml
 type: NormalExercise
 xp: 100
+key: e2ff684fba
 ```
 
 Now try to change the header of the for loop to see how the header changes what R executes. 
@@ -112,6 +113,7 @@ success_msg("Awesome!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: bcff433185
 ```
 
 
