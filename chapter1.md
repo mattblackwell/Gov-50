@@ -634,3 +634,117 @@ summary(UNpop)
 ex() %>% check_output_expr("UNpop") %>% check_output_expr("names(UNpop)") %>% check_output_expr("dim(UNpop)") %>% check_output_expr("summary(UNpop)")
 success_msg("Great job!")
 ```
+
+---
+
+## Subsetting a data frame (I)
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+You'll often need to access different parts of a data frame to use in other commands. For instance, maybe you want to take the mean of a column of the data frame or maybe you want to see all of the data for the 4th unit. Either way, we'll need to know how to subset the data frame. To select a particular variable from the data frame, you can use the `$` operator. So `mydata$myvar` will be a vector of just the `myvar` column of the `mydata` data frame. 
+
+
+`@instructions`
+- Use the `$` to print out the `world.pop` variable from the `UNpop` data frame. 
+- Using the `$` operator, calculate the mean of the `world.pop` variable. 
+
+`@hint`
+Check out Section 1.3.5 of Imai if you get stuck on these.
+
+`@pre_exercise_code`
+```{r}
+UNpop <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/24085883b6c1a2a2b3fa9b6d997efee6df7a4333/UNpop.csv")
+```
+
+
+`@sample_code`
+```{r}
+## print out the world.pop variable using $
+
+
+## calculate the mean world population over this time period
+
+```
+
+`@solution`
+```{r}
+## print out the world.pop variable using $
+UNpop$world.pop
+
+## calculate the mean world population over this time period
+mean(UNpop$world.pop)
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("UNpop$world.pop")
+ex() %>% check_output_expr("mean(UNpop$world.pop)")
+success_msg("Great! Now, let's learn another way to subset data frames.")
+```
+
+---
+
+## Subsetting a data frame (II)
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+
+You can also use the brackets `[ ]` to subset from the data frame. But how will R know if you want to subset the rows or the columns? With a data frame as opposed to a vector, you will use a comma and the bracket will have the following form: `[rows, columns]` where the expression before the comma will select the rows and the expression after the comma will select the columns. 
+
+- `mydata[,"myvar"]` will select the `myvar` column from `mydata`
+- `mydata[1,]` will select the first row of `mydata`
+- `mydata[c(1,2,3),]` will select the first three rows of `mydata`
+- `mydata[1:3, "myvar"]` will select the first three values of the `myvar` variable of `mydata`
+
+
+`@instructions`
+- Use the bracket commands to extract and print the `world.pop` variable from the `UNpop` data frame.
+- Use the bracket commands to extract and print rows 5 through 7 of the `UNpop` data frame. 
+- Use the bracket commands to extract and print rows 5 through 7 of the `world.pop` variable of the `UNpop` data frame. 
+
+`@hint`
+Check out Section 1.3.5 of Imai if you get stuck on these.
+
+`@pre_exercise_code`
+```{r}
+UNpop <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/24085883b6c1a2a2b3fa9b6d997efee6df7a4333/UNpop.csv")
+```
+
+
+`@sample_code`
+```{r}
+## use brackets to print out the world.pop variable
+
+
+## extract rows 5 through 7 and all variables
+
+
+## extract values 5 through 7 of the world.pop variable
+
+```
+
+`@solution`
+```{r}
+## use brackets to print out the world.pop variable
+UNpop[, "world.pop"]
+
+## extract rows 5 through 7 and all variables
+UNpop[5:7, ]
+
+## extract values 5 through 7 of the world.pop variable
+UNpop[5:7, "world.pop"]
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("UNpop[, "world.pop"]")
+ex() %>% check_output_expr("UNpop[5:7,]")
+ex() %>% check_output_expr("UNpop[5:7, 'world.pop']")
+success_msg("You are rocking these data frames. You are ready to move on to the next part of the course!")
+```
