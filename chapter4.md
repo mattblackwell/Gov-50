@@ -104,3 +104,47 @@ ex() %>% check_for() %>% {
 success_msg("Awesome!")
 ```
 
+---
+
+## Conditional statements 
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+x <- 5
+y <- 10
+
+if (x >= y) {
+    cat("x is greater than or equal to y")
+} else {
+    cat("x is less than y")
+}
+```
+
+`@sct`
+```{r}
+
+```
+
