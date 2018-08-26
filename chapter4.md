@@ -164,7 +164,7 @@ if (x >= y) {
 `@sct`
 ```{r}
 ex() %>% check_if_else() %>% {
-    check_cond(.) %>% check_code("x\\s+\\>\\=\\s+")
+    check_cond(.) %>% check_code("x\\s+>\\=\\s+y")
 }
 success_msg("Good job, you've written an if statement!")
 ```
@@ -230,7 +230,7 @@ if (x >= y) {
 `@sct`
 ```{r}
 ex() %>% check_if_else() %>% {
-    check_cond(.) %>% check_code("x\\s+\\>\\=\\s+")
+    check_cond(.) %>% check_code("x\\s+>=\\s+")
     check_else(.) 
 }
 success_msg("Great! These statements will be useful.")
