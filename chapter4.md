@@ -108,7 +108,7 @@ success_msg("Awesome!")
 
 ---
 
-## Conditional statements 
+## if statements
 
 ```yaml
 type: NormalExercise
@@ -116,12 +116,21 @@ xp: 100
 key: bcff433185
 ```
 
+In addition to loops, it is also useful to have certain parts of the code only run if certain conditions are met. Maybe you want to only print out a string when a certain value is missing. Or you only want to execute a particular iteration of a loop if condition is met. The `if` and `else` construction will be very useful in these situations. To use it, we start with a header `if (cond)` where `cond` is a logical expression:
+
+    if (mystring == "greeting") {
+        cat("Hello world!\n")
+    }
+
+Here, R will only print `"Hello World!"` if the `mystring` object is equal to `"greeting"`. Otherwise, R will skip everything inside the curly braces. 
 
 
 `@instructions`
-
+- Change the sample code where you see `XYZ` to create an if statement that only executes the `cat` function when `x` is greater than or equal to `y`.
+- What output do you see?
 
 `@hint`
+See Section 4.1.2 of QSS for more help on if/else statments. 
 
 `@pre_exercise_code`
 ```{r}
@@ -131,7 +140,14 @@ key: bcff433185
 
 `@sample_code`
 ```{r}
+x <- 5
+y <- 10
 
+## wrap an if statement around the cat statement
+## replacing the XYZ
+XYZ
+    cat("x is greater than or equal to y.\n")
+XYZ
 ```
 
 `@solution`
@@ -139,15 +155,82 @@ key: bcff433185
 x <- 5
 y <- 10
 
+## wrap an if statement around the cat statement
 if (x >= y) {
-    cat("x is greater than or equal to y")
-} else {
-    cat("x is less than y")
+    cat("x is greater than or equal to y.\n")
 }
 ```
 
 `@sct`
 ```{r}
+ex() %>% check_if_else() %>% {
+    check_cond(.) %>% check_code("x\\s+in\\s+")
+}
+success_msg("Good job, you've written an if statement!")
+```
+
+---
+
+## if/else statements
+
+```yaml
+type: NormalExercise
+xp: 100
+```
+
+In the last exercise, the `if` condition wasn't true and so R didn't execute anything. Often it's useful to have something happen in this situation. That's where the `else` statement comes in. With the `else` statement, you can specify what R should do when the if condition is false. You can use it like so:
+
+    if (mystring == "greeting") {
+        cat("Hello world!\n")
+    } else {
+        cat("Don't mind me.\n")
+    }
+
+This code will do one of two things. If `mystring` is equal to `"greeting"`, it will print out `"Hello World!"`. If `"mystring"` is not equal to `"greeting"` (that is `mystring == "greeting"` is `FALSE`), then R will execute what's in the body of the `else` statement, which in this case mean it will print `"Don't mind me."`.
+
+`@instructions`
+- Replace the `XYZ` statements in the sample code with an `if` and `else` structure that prints the first `cat` statement when `x` is greater than or equal to `y` and prints the second `cat` statement otherwise. 
+
+`@hint`
+See Section 4.1.2 of QSS for more help on if/else statments. 
+
+`@pre_exercise_code`
+```{r}
 
 ```
 
+
+`@sample_code`
+```{r}
+x <- 5
+y <- 10
+
+## wrap an if statement around the cat statement
+XYZ
+    cat("x is greater than or equal to y.\n")
+XYZ
+    cat("x is less than y.\n")
+XYZ
+```
+
+`@solution`
+```{r}
+x <- 5
+y <- 10
+
+## wrap an if statement around the cat statement
+if (x >= y) {
+    cat("x is greater than or equal to y.\n")
+} else {
+    cat("x is less than y.\n")
+}
+```
+
+`@sct`
+```{r}
+ex() %>% check_if_else() %>% {
+    check_cond(.) %>% check_code("x\\s+in\\s+")
+    check_else(.) 
+}
+success_msg("Great! These statements will be useful.")
+```
