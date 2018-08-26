@@ -176,6 +176,7 @@ success_msg("Good job, you've written an if statement!")
 ```yaml
 type: NormalExercise
 xp: 100
+key: ce0b5eccbc
 ```
 
 In the last exercise, the `if` condition wasn't true and so R didn't execute anything. Often it's useful to have something happen in this situation. That's where the `else` statement comes in. With the `else` statement, you can specify what R should do when the if condition is false. You can use it like so:
