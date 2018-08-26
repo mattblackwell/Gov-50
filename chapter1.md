@@ -745,7 +745,7 @@ UNpop[5:7, "world.pop"]
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("UNpop[, "world.pop"]")
+ex() %>% check_output_expr("UNpop[, 'world.pop']")
 ex() %>% check_output_expr("UNpop[5:7,]")
 ex() %>% check_output_expr("UNpop[5:7, 'world.pop']")
 success_msg("You are rocking these data frames. You are ready to move on to the next part of the course!")
