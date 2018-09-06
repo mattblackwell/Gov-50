@@ -14,7 +14,7 @@ key: b3d91783a1
 
 In this chapter, we are going to be working with the resume data from Section 2.1 of Imai. This data comes from an experiment where researchers sent fictitious resumes with different names that implied different race and gender combinations to see if potential employers were more likely to call back names associated with different racial groups and genders. 
 
-Let's first explore the data a bit. It's store as `resume`.
+Let's first explore the data a bit. It's stored as `resume`.
 
 
 `@instructions`
@@ -41,6 +41,7 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 
 
 ## create a summary of the variables in the data
+
 ```
 
 `@solution`
@@ -97,6 +98,7 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 sex.call.tab <- 
 
 ## print the contingency table
+
 ```
 
 `@solution`
@@ -155,6 +157,7 @@ x <-
 
 
 ## take the mean of the vector
+
 ```
 
 `@solution`
@@ -294,11 +297,11 @@ key: dc881eb5bf
 ```
 
 
-In this exercise, you have the ages of a sample of 15 people, stored in the `ages` vector. We can use these relational operators to find the values of a vector that fall in a range using the same `&` and `|` operators. In particular, we can find out how many of the respondents are college-aged (18-22)
+In this exercise, you have the ages of a sample of 15 people, stored in the `ages` vector. We can use these relational operators to create a logical vector which indicates which ages fall within a specific range. In particular, we can find out which respondents are college-aged (18-22)
 
 `@instructions`
-- Find all the values of the `ages` that are greater than or equal to 18 and less than or equal to 22 and save this to a vector called `college.aged`. Be sure to use parentheses to separate out the two logical statements. 
-- Take the sum of the `college.aged` vector to count how many 18-22 year olds there are in the sample.
+- Create a logical vector, called `college.aged`, which indicates which observations in `ages` are greater than or equal to 18 and less than or equal to 22. Be sure to use parentheses to separate out the two logical statements. 
+- Take the sum of the `college.aged` vector to determine how many 18-22 year olds there are in the sample.
 
 
 `@hint`
@@ -354,7 +357,7 @@ key: 1675a99a66
 In the last exercise, you used logical statements to create a vector that told us whether each entry in the `ages` vector is in the 18-22 year-old range. We can now use that information to figure out what the actual ages of the respondents in that range are. 
 
 `@instructions`
-- Use the brackets and the `college.aged` logical vector to subset `ages` to the value only between 18 and 22, inclusive. 
+- Use the brackets and the `college.aged` logical vector that has already been created to subset `ages` to the value only between 18 and 22, inclusive. 
 - Use the `mean` function to calculate the average age of the respondents in this subset. 
 
 `@hint`
@@ -368,8 +371,8 @@ ages <- sample(18:65, size = 15)
 
 `@sample_code`
 ```{r}
+## here's the college.aged logical vector
 college.aged <- (ages >= 18) & (ages <= 22)
-college.aged
 
 ## use the brackets to subset the ages vector to those who are college aged
 
@@ -380,8 +383,8 @@ college.aged
 
 `@solution`
 ```{r}
+## here's the college.aged logical vector
 college.aged <- (ages >= 18) & (ages <= 22)
-college.aged
 
 ## use the brackets to subset the ages vector to those who are college aged
 ages[college.aged]
@@ -406,7 +409,7 @@ xp: 100
 key: 5c0ff0cf18
 ```
 
-You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. 
+You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. For this exercise, we will use the `resume` data frame made up of the variables `firstname`, `sex`,       `race`, and `call`.
 
 
 `@instructions`
@@ -487,7 +490,7 @@ resume.wf <- subset(resume, subset = (race == "white" & sex == "female"))
 ## create the subset for black female names
 resume.bf <- 
 
-## compare the difference in means
+## calculate the difference in callback means
 
 ```
 
@@ -518,10 +521,10 @@ xp: 100
 key: bfa582b1b6
 ```
 
-What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$name == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE. 
+What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$firstname == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE. 
 
 `@instructions`
-- Use the `ifelse` function to create a new variable called `carrie` that is 1 if the resume name is `"Carrie"` and 0 otherwise. 
+- Use the `ifelse` function to create a new variable called `carrie` that is 1 if the resume name (`firstname`) is `"Carrie"` and 0 otherwise. 
 - Print the first six lines of `resume` using the `head` function to see the new variable.
 
 `@hint`
@@ -667,7 +670,7 @@ resume$type <- as.factor(resume$type)
 ## get the number of observations for each level of the type variable
 
 
-## use the `tapply` function to calculate the mean in each level of type
+## use the `tapply` function to calculate the mean callback for each level of type
 
 ```
 

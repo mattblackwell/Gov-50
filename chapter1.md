@@ -42,6 +42,7 @@ See Section 1.3 of Imai. Be sure to write the code on a new line without a `#` i
 ## Divide 6 by 2
 
 ## Take the square root of 16
+
 ```
 
 `@solution`
@@ -89,13 +90,14 @@ mydiff <-
 
 ## type the name of the assigned object (mydiff) below
 ## to print out the results
+
 ```
 
 `@solution`
 
 ```{r}
 ## assign the difference here
-mydiff <- 8 - 2
+mydiff <- 8 - 1
 
 ## type the name of the assigned object (mydiff) below
 ## to print out the results
@@ -141,6 +143,7 @@ course <-
 course <-
 
 ## print the value of course here
+
 ```
 
 `@solution`
@@ -244,6 +247,7 @@ Just type the name of the vector you want! See Section 1.3.3 (Vectors) of Imai.
 world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 ## print the world.pop data
+
 ```
 
 `@solution`
@@ -297,6 +301,7 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 
 ## access and print the 1st and 4th value of world.pop
+
 ```
 
 `@solution`
@@ -356,6 +361,7 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 
 
 ## calculate the average value of world.pop
+
 ```
 
 `@solution`
@@ -389,7 +395,7 @@ key: fd1997936b
 ```
 
 
-Creating vectors using the `c()` command can be cumbersome and time consuming. Sometimes we can create vectors much more quickly. One place where we can do this is with sequences of numbers that follow a pre-specified pattern. In that case, we can use the `seq()` function. This function takes three arguments:
+Creating vectors using the `c()` command can be cumbersome and time consuming. Sometimes we can create vectors much more quickly. One place where we can do this is with sequences of numbers that follow a pre-specified pattern. In that case, we can use the `seq()` function. This function most commonly takes three arguments:
 - `from` - the first number in the sequence. 
 - `to` - the last number in the sequence
 - `by` - the increments between each value in the sequence. 
@@ -398,7 +404,7 @@ We're going to use this to create a label for the  `world.pop` vector. We can as
 
 `@instructions`
 - Create a vector called `year` that is a sequence from 1950 to 2010 that increases in increments of 10 years. 
-- Assign this vector to `names(world.pop)` to relabel the `world.pop` vector
+- Assign this vector to `names(world.pop)` to relabel --- that is, to assign names to --- the `world.pop` vector
 - Print out the `world.pop` vector to the console.
 
 `@hint`
@@ -420,6 +426,7 @@ year <-
 names(world.pop) <- 
 
 ## print out the world.pop object
+
 ```
 
 `@solution`
@@ -477,6 +484,7 @@ year <- seq(from=1950, to=2010, by = 10)
 
 
 ## print the modified year vector
+
 ```
 
 `@solution`
@@ -506,10 +514,9 @@ xp: 100
 key: 133ae8f5a9   
 ```
 
+What if we wanted our data in millions of people? How would we create this vector from the vector that we have? (Recall that world.pop is currently in units of thousands of people.) One way would be to do this manually---create a new vector using `c()` that concatenates the world population in millions of people rather than thousands of people. But this is cumbersome, can't we use the vector we already have? Yes!
 
-What if we wanted our data in millions of people? How would we create this vector from the vector that we have? One way would be to do this manually---create a new vector using `c()` that concatenates the world population in millions of people rather than the number of people. But this is cumbersome, can't we use the vector we already have? Yes!
-
-We can apply many types of arithmetic operators such as addition, subtraction, multiplication, and division to our vector. For example, the code `x + 5` will add the number 5 to each value in the vector. In this exercise, we will create a new vector that is the world population in millions of people, which is just the total population divided by 1000.
+We can apply many types of arithmetic operators such as addition, subtraction, multiplication, and division to our vector. For example, the code `x + 5` will add the number 5 to each value in the vector. In this exercise, we will create a new vector that is the world population in millions of people, which is just the total population in thousands divided by 1000.
 
 
 `@instructions`
@@ -532,6 +539,7 @@ world.pop <- c(2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183)
 pop.million <- 
 
 ## print out the pop.million variable
+
 ```
 
 `@solution`
@@ -570,10 +578,11 @@ A `data.frame` is an object in R that is basically like a spreadsheet with some 
 - `dim(mydata)` - returns a vector of the number of rows and the number of columns (the dimension of the data). 
 - `summary(mydata)` - provides a summary of each variable in the data. 
 
-These are super useful functions Let's use some of these on the population data.
+These are super useful functions Let's use some of these on a data frame, `UNpop`, which has the same information as the `world.pop` vector, but stored as a data frame.
 
 
 `@instructions`
+- Print the `UNpop` data frame.
 - Output the variables names in the `UNpop` data frame. 
 - Use the `dim` function report the number of rows and columns of the data frame. 
 - Use the `summary` function to show a summary of each variable.
@@ -600,6 +609,7 @@ UNpop <- read.csv("https://assets.datacamp.com/production/repositories/3045/data
 
 
 ## Print a summary of the data in UNpop
+
 ```
 
 `@solution`
@@ -623,4 +633,120 @@ summary(UNpop)
 ```{r}
 ex() %>% check_output_expr("UNpop") %>% check_output_expr("names(UNpop)") %>% check_output_expr("dim(UNpop)") %>% check_output_expr("summary(UNpop)")
 success_msg("Great job!")
+```
+
+---
+
+## Subsetting a data frame (I)
+
+```yaml
+type: NormalExercise
+xp: 100
+key: 414f6ff062
+```
+
+You'll often need to access different parts of a data frame to use in other commands. For instance, maybe you want to take the mean of a column of the data frame or maybe you want to see all of the data for the 4th unit. Either way, we'll need to know how to subset the data frame. To select a particular variable from the data frame, you can use the `$` operator. So `mydata$myvar` will be a vector of just the `myvar` column of the `mydata` data frame. 
+
+
+`@instructions`
+- Use the `$` to print out the `world.pop` variable from the `UNpop` data frame. 
+- Using the `$` operator, calculate the mean of the `world.pop` variable. 
+
+`@hint`
+Check out Section 1.3.5 of Imai if you get stuck on these.
+
+`@pre_exercise_code`
+```{r}
+UNpop <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/24085883b6c1a2a2b3fa9b6d997efee6df7a4333/UNpop.csv")
+```
+
+
+`@sample_code`
+```{r}
+## print out the world.pop variable using $
+
+
+## calculate the mean world population over this time period
+
+```
+
+`@solution`
+```{r}
+## print out the world.pop variable using $
+UNpop$world.pop
+
+## calculate the mean world population over this time period
+mean(UNpop$world.pop)
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("UNpop$world.pop")
+ex() %>% check_output_expr("mean(UNpop$world.pop)")
+success_msg("Great! Now, let's learn another way to subset data frames.")
+```
+
+---
+
+## Subsetting a data frame (II)
+
+```yaml
+type: NormalExercise
+xp: 100
+key: 5f1c815862
+```
+
+
+You can also use the brackets `[ ]` to subset from the data frame. But how will R know if you want to subset the rows or the columns? With a data frame as opposed to a vector, you will use a comma and the bracket will have the following form: `[rows, columns]` where the expression before the comma will select the rows and the expression after the comma will select the columns. 
+
+- `mydata[,"myvar"]` will select the `myvar` column from `mydata`
+- `mydata[1,]` will select the first row of `mydata`
+- `mydata[c(1,2,3),]` will select the first three rows of `mydata`
+- `mydata[1:3, "myvar"]` will select the first three values of the `myvar` variable of `mydata`
+
+
+`@instructions`
+- Use the bracket commands to extract and print the `world.pop` variable from the `UNpop` data frame.
+- Use the bracket commands to extract and print rows 5 through 7 of the `UNpop` data frame. 
+- Use the bracket commands to extract and print rows 5 through 7 of the `world.pop` variable of the `UNpop` data frame. 
+
+`@hint`
+Check out Section 1.3.5 of Imai if you get stuck on these.
+
+`@pre_exercise_code`
+```{r}
+UNpop <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/24085883b6c1a2a2b3fa9b6d997efee6df7a4333/UNpop.csv")
+```
+
+
+`@sample_code`
+```{r}
+## use brackets to print out the world.pop variable
+
+
+## extract rows 5 through 7 and all variables
+
+
+## extract values 5 through 7 of the world.pop variable
+
+```
+
+`@solution`
+```{r}
+## use brackets to print out the world.pop variable
+UNpop[, "world.pop"]
+
+## extract rows 5 through 7 and all variables
+UNpop[5:7, ]
+
+## extract values 5 through 7 of the world.pop variable
+UNpop[5:7, "world.pop"]
+```
+
+`@sct`
+```{r}
+ex() %>% check_output_expr("UNpop[, 'world.pop']")
+ex() %>% check_output_expr("UNpop[5:7,]")
+ex() %>% check_output_expr("UNpop[5:7, 'world.pop']")
+success_msg("You are rocking these data frames. You are ready to move on to the next part of the course!")
 ```
