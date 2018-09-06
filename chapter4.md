@@ -1,6 +1,6 @@
 ---
-  title: "Prediction"
-  description: "Making predictions in R using loops, conditionals, and linear regression."
+  title: "Prediction (Part I)"
+  description: "Getting used to for loops and conditionals."
 ---
 
 
@@ -235,3 +235,4 @@ ex() %>% check_if_else() %>% {
 }
 success_msg("Great! These statements will be useful.")
 ```
+
