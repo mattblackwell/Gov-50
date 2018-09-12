@@ -195,7 +195,7 @@ We often combine logical statements using AND (`&`) and OR (`|`) in R. For AND s
 - `TRUE & FALSE`, `FALSE & TRUE`, and `FALSE & FALSE` are `FALSE`
 - `TRUE & TRUE` is `TRUE`
 For OR statements, either statement being true makes the whole expression true:
-- `TRUE | FALSE`, `FALSE | TRUE`, and `TRUE | TRUE` are `FALSE`
+- `TRUE | FALSE`, `FALSE | TRUE`, and `TRUE | TRUE` are `TRUE`
 - `FALSE | FALSE` is `FALSE`
 
 What does the following evaluate to?
