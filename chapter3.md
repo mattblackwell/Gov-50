@@ -55,7 +55,15 @@ summary(star)
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("head(star)") %>% check_output_expr("dim(star)") %>% check_output_expr("summary(star)")
+ex() %>% check_function("head") %>% { 
+    check_arg(., "x") %>% check_equal()
+}
+ex() %>% check_function("dim") %>% { 
+    check_arg(., "x") %>% check_equal() 
+}
+ex() %>% check_function("summary") %>% { 
+    check_arg(., "object") %>% check_equal()
+}
 success_msg("Great job, let's get to work on this data!")
 ```
 
