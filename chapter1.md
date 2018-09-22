@@ -385,13 +385,13 @@ mean(world.pop)
 
 ```{r}
 ex() %>% check_fun("length") %>% {
-    check_args(., "x") %>% check_equal()
+    check_arg(., "x") %>% check_equal()
 }
 ex() %>% check_fun("min") %>% {
-    check_args(., "...") %>% check_equal()
+    check_arg(., "...") %>% check_equal()
 }
 ex() %>% check_fun("mean") %>%  {
-    check_args(., "x") %>% check_equal()
+    check_arg(., "x") %>% check_equal()
 }
 success_msg("Great!")
 ```
@@ -647,13 +647,13 @@ summary(UNpop)
 ```{r}
 ex() %>% check_output_expr("UNpop") 
 ex() %>% check_function("names") %>% {
-    check_args(., "x")
+    check_arg(., "x")
 }
 ex() %>% check_function("dim") %>% {
-    check_args(., "x")
+    check_arg(., "x")
 }
 ex() %>% check_function("summary") %>% {
-    check_args(., "object")
+    check_arg(., "object")
 }
 success_msg("Great job!")
 ```

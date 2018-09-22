@@ -122,9 +122,9 @@ mean(is.na(star$g4math))
 
 `@sct`
 ```{r}
-ex() %>% check_function("head") %>% check_args("x") %>% check_equal()
-ex() %>% check_function("sum") %>% check_args("...") %>% check_equal()
-ex() %>% check_function("mean") %>% check_args("x") %>% check_equal()
+ex() %>% check_function("head") %>% check_arg("x") %>% check_equal()
+ex() %>% check_function("sum") %>% check_arg("...") %>% check_equal()
+ex() %>% check_function("mean") %>% check_arg("x") %>% check_equal()
 success_msg("Great job!")
 ```
 
@@ -174,10 +174,10 @@ mean(star$g4math, na.rm = TRUE)
 
 `@sct`
 ```{r}
-ex() %>% check_function("mean") %>% check_args("x") %>% check_equal()
+ex() %>% check_function("mean") %>% check_arg("x") %>% check_equal()
 ex() %>% check_function("mean") %>% { 
-    check_args(., "x") %>% check_equal()
-    check_args(., "na.rm") %>% check_equal()
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "na.rm") %>% check_equal()
 }
 success_msg("Great job! Now that you are a missing data expert, let's learn how to make some visualizations.")
 ```
