@@ -384,13 +384,13 @@ mean(world.pop)
 `@sct`
 
 ```{r}
-ex() %>% check_fun("length") %>% {
+ex() %>% check_function("length") %>% {
     check_arg(., "x") %>% check_equal()
 }
-ex() %>% check_fun("min") %>% {
+ex() %>% check_function("min") %>% {
     check_arg(., "...") %>% check_equal()
 }
-ex() %>% check_fun("mean") %>%  {
+ex() %>% check_function("mean") %>%  {
     check_arg(., "x") %>% check_equal()
 }
 success_msg("Great!")
