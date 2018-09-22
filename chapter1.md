@@ -107,7 +107,8 @@ mydiff
 `@sct`
 
 ```{r}
-ex() %>% check_object("mydiff") %>% check_equal() %>% check_output_expr("mydiff")
+ex() %>% check_object("mydiff") %>% check_equal() 
+ex() %>% check_output_expr("mydiff")
 success_msg("Well done!")
 ```
 
@@ -162,7 +163,8 @@ course
 `@sct`
 
 ```{r}
-ex() %>% check_object("course") %>% check_equal() %>% check_output_expr("course")
+ex() %>% check_object("course") %>% check_equal() 
+ex() %>% check_output_expr("course")
 success_msg("You did it!")
 ```
 
@@ -216,7 +218,8 @@ result <- 10-2
 `@sct`
 
 ```{r}
-ex() %>% check_object("result2") %>% check_object("result") %>% check_equal()
+ex() %>% check_object("result2") %>% check_equal()
+ex() %>% check_object("result") %>% check_equal()
 success_msg("You did it!")
 ```
 
@@ -314,7 +317,8 @@ world.pop[c(1,4)]
 `@sct`
 
 ```{r}
-ex() %>% check_output_expr("world.pop[4]") %>% check_output_expr("world.pop[c(1,4)]")
+ex() %>% check_output_expr("world.pop[4]") 
+ex() %>% check_output_expr("world.pop[c(1,4)]")
 success_msg("Great!")
 ```
 
@@ -380,7 +384,15 @@ mean(world.pop)
 `@sct`
 
 ```{r}
-ex() %>% check_output_expr("length(world.pop)") %>% check_output_expr("min(world.pop)") %>% check_output_expr("mean(world.pop)")
+ex() %>% check_function("length") %>% {
+    check_arg(., "x") %>% check_equal()
+}
+ex() %>% check_function("min") %>% {
+    check_arg(., "...") %>% check_equal()
+}
+ex() %>% check_function("mean") %>%  {
+    check_arg(., "x") %>% check_equal()
+}
 success_msg("Great!")
 ```
 
@@ -445,7 +457,8 @@ world.pop
 `@sct`
 
 ```{r}
-ex() %>% check_object("world.pop") %>% check_equal(eq_condition = "equal") %>% check_output_expr("world.pop")
+ex() %>% check_object("world.pop") %>% check_equal(eq_condition = "equal") 
+ex() %>% check_output_expr("world.pop")
 success_msg("Good job!")
 ```
 
@@ -555,7 +568,8 @@ pop.million
 `@sct`
 
 ```{r}
-ex() %>% check_object("pop.million") %>% check_equal() %>% check_output_expr("pop.million")
+ex() %>% check_object("pop.million") %>% check_equal() 
+ex() %>% check_output_expr("pop.million")
 success_msg("Great!")
 ```
 
@@ -631,7 +645,16 @@ summary(UNpop)
 `@sct`
 
 ```{r}
-ex() %>% check_output_expr("UNpop") %>% check_output_expr("names(UNpop)") %>% check_output_expr("dim(UNpop)") %>% check_output_expr("summary(UNpop)")
+ex() %>% check_output_expr("UNpop") 
+ex() %>% check_function("names") %>% {
+    check_arg(., "x")
+}
+ex() %>% check_function("dim") %>% {
+    check_arg(., "x")
+}
+ex() %>% check_function("summary") %>% {
+    check_arg(., "object")
+}
 success_msg("Great job!")
 ```
 

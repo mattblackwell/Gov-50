@@ -55,7 +55,15 @@ summary(star)
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("head(star)") %>% check_output_expr("dim(star)") %>% check_output_expr("summary(star)")
+ex() %>% check_function("head") %>% { 
+    check_arg(., "x") %>% check_equal()
+}
+ex() %>% check_function("dim") %>% { 
+    check_arg(., "x") %>% check_equal() 
+}
+ex() %>% check_function("summary") %>% { 
+    check_arg(., "object") %>% check_equal()
+}
 success_msg("Great job, let's get to work on this data!")
 ```
 
@@ -114,7 +122,9 @@ mean(is.na(star$g4math))
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("head(is.na(star$g4math))") %>% check_output_expr("sum(is.na(star$g4math))") %>% check_output_expr("mean(is.na(star$g4math))")
+ex() %>% check_function("head") %>% check_arg("x") %>% check_equal()
+ex() %>% check_function("sum") %>% check_arg("...") %>% check_equal()
+ex() %>% check_function("mean") %>% check_arg("x") %>% check_equal()
 success_msg("Great job!")
 ```
 
@@ -164,7 +174,11 @@ mean(star$g4math, na.rm = TRUE)
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("mean(star$g4math)") %>% check_output_expr("mean(star$g4math, na.rm = TRUE)")
+ex() %>% check_function("mean", index = 1) %>% check_arg("x") %>% check_equal()
+ex() %>% check_function("mean", index = 2) %>% { 
+    check_arg(., "x") %>% check_equal()
+    check_arg(., "na.rm") %>% check_equal()
+}
 success_msg("Great job! Now that you are a missing data expert, let's learn how to make some visualizations.")
 ```
 ---
