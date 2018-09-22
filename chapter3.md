@@ -174,8 +174,8 @@ mean(star$g4math, na.rm = TRUE)
 
 `@sct`
 ```{r}
-ex() %>% check_function("mean") %>% check_arg("x") %>% check_equal()
-ex() %>% check_function("mean") %>% { 
+ex() %>% check_function("mean", index = 1) %>% check_arg("x") %>% check_equal()
+ex() %>% check_function("mean", index = 2) %>% { 
     check_arg(., "x") %>% check_equal()
     check_arg(., "na.rm") %>% check_equal()
 }
