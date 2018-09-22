@@ -60,7 +60,16 @@ summary(resume)
 `@sct`
 
 ```{r}
-ex() %>% check_output_expr("head(resume)") %>% check_output_expr("dim(resume)") %>% check_output_expr("summary(resume)")
+ex() %>% check_function("head") %>% {
+    check_args(., "x") %>% check_equal()
+}
+ex() %>% check_function("dim") %>% {
+    check_args(., "x") %>% check_equal()
+}
+ex() %>% check_function("summary") %>% {
+    check_args(., "object") %>% check_equal()
+}
+
 success_msg("Awesome, now you have a good sense of what this data looks like!")
 ```
 
@@ -114,7 +123,11 @@ sex.call.tab
 `@sct`
 
 ```{r}
-ex() %>% check_object("sex.call.tab") %>% check_equal() %>% check_output_expr("sex.call.tab")
+ex() %>% check_function("table") %>% {
+    check_args(., "sex") %>% check_equal()
+    check_args(., "call") %>% check_equal()
+}
+ex() %>% check_output_expr("sex.call.tab")
 success_msg("Awesome, that cross tab looks great!")
 ```
 
@@ -176,7 +189,13 @@ mean(x)
 `@sct`
 
 ```{r}
-ex() %>% check_object("x") %>% check_output_expr("sum(x)")%>% check_output_expr("mean(x)")
+ex() %>% check_object("x") %>% check_equal() 
+ex() %>% check_function("sum") %>% {
+    check_args(., "...") %>% check_equal()
+}
+ex() %>% check_function("mean") %>% {
+    check_args(., "x") %>% check_equal()
+}
 success_msg("Ok, great, you're logic is stone cold.")
 ```
 
@@ -282,7 +301,8 @@ x >= 0
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("10 > 5") %>% check_output_expr("x >= 0")
+ex() %>% check_output_expr("10 > 5") 
+ex() %>% check_output_expr("x >= 0")
 success_msg("Good job!")
 ```
 
@@ -340,7 +360,10 @@ sum(college.aged)
 
 `@sct`
 ```{r}
-ex() %>% check_object("college.aged") %>% check_equal() %>% check_output_expr("sum(college.aged)")
+ex() %>% check_object("college.aged") %>% check_equal() 
+ex() %>% check_function("sum") %>% {
+    check_args(., "...") %>% check_equal()
+}
 success_msg("Excellent job! This skill will be insanely useful as you move forward.")
 ```
 
@@ -395,7 +418,10 @@ mean(ages[college.aged])
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("ages[college.aged]") %>% check_output_expr("mean(ages[college.aged])")
+ex() %>% check_output_expr("ages[college.aged]") 
+ex() %>% check_function("mean") %>% {
+    check_args(., "x") %>% check_equal()
+}
 success_msg("Ok, great job!")
 ```
 
@@ -453,7 +479,13 @@ mean(resume.wf$call)
 
 `@sct`
 ```{r}
-ex() %>% check_object("resume.wf") %>% check_equal() %>% check_output_expr("head(resume.wf)") %>% check_output_expr("mean(resume.wf$call)")
+ex() %>% check_object("resume.wf") %>% check_equal() 
+ex() %>% check_function("head") %>% {
+    check_args(., "x") %>% check_equal()
+}
+ex() %>% check_function("mean") %>% {
+    check_args(., "x") %>% check_equal()
+}
 success_msg("You are rocking this data stuff!")
 ```
 ---
@@ -508,7 +540,8 @@ mean(resume.wf$call) - mean(resume.bf$call)
 
 `@sct`
 ```{r}
-ex() %>% check_object("resume.bf") %>% check_equal() %>% check_output_expr("mean(resume.wf$call) - mean(resume.bf$call)")
+ex() %>% check_object("resume.bf") %>% check_equal() 
+ex() %>% check_output_expr("mean(resume.wf$call) - mean(resume.bf$call)")
 success_msg("You just analyzed an experiment! Way to go!")
 ```
 ---
@@ -558,6 +591,7 @@ head(resume)
 `@sct`
 ```{r}
 ex() %>% check_object("resume") %>% check_equal()
+ex() %>% check_function("head") %>% check_args("x") %>% check_equal()
 success_msg("Awesome job!")
 ```
 
@@ -685,6 +719,11 @@ tapply(resume$call, resume$type, mean)
 
 `@sct`
 ```{r}
-ex() %>% check_output_expr("table(resume$type)") %>% check_output_expr("tapply(resume$call, resume$type, mean)")
+ex() %>% check_function("table") %>% check_args("...") %>% check_equal()
+ex() %>% check_function("tapply") %>% {
+    check_args("X") %>% check_equal()
+    check_args("INDEX") %>% check_equal()
+    check_args("FUN") %>% check_equal()
+}
 success_msg("Great work, you have the skills you need to analyze experiments and observational data!")
 ```
