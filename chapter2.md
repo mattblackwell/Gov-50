@@ -721,9 +721,9 @@ tapply(resume$call, resume$type, mean)
 ```{r}
 ex() %>% check_function("table") %>% check_args("...") %>% check_equal()
 ex() %>% check_function("tapply") %>% {
-    check_args("X") %>% check_equal()
-    check_args("INDEX") %>% check_equal()
-    check_args("FUN") %>% check_equal()
+    check_args(.,"X") %>% check_equal()
+    check_args(., "INDEX") %>% check_equal()
+    check_args(., "FUN") %>% check_equal()
 }
 success_msg("Great work, you have the skills you need to analyze experiments and observational data!")
 ```
