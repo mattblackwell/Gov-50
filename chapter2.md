@@ -1,21 +1,19 @@
 ---
-  title: "Causality"
-  description: "Using R to help establish causal statements"
+title: Causality
+description: 'Using R to help establish causal statements'
 ---
 
 ## Exploring the resume data
 
 ```yaml
-type: NormalExercise 
-xp: 100 
-key: b3d91783a1   
+type: NormalExercise
+key: b3d91783a1
+xp: 100
 ```
-
 
 In this chapter, we are going to be working with the resume data from Section 2.1 of Imai. This data comes from an experiment where researchers sent fictitious resumes with different names that implied different race and gender combinations to see if potential employers were more likely to call back names associated with different racial groups and genders. 
 
 Let's first explore the data a bit. It's stored as `resume`.
-
 
 `@instructions`
 - Use the `head` function to show the first six lines of the `resume` data. 
@@ -26,13 +24,11 @@ Let's first explore the data a bit. It's stored as `resume`.
 Remember that the name of the data frame is `resume`. Check back in Section 1.3.5 of QSS for a refresher on these functions.
 
 `@pre_exercise_code`
-
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
 
 `@sample_code`
-
 ```{r}
 ## print the first 6 lines of the data
 
@@ -45,7 +41,6 @@ resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/dat
 ```
 
 `@solution`
-
 ```{r}
 ## print the first 6 lines of the data
 head(resume)
@@ -58,7 +53,6 @@ summary(resume)
 ```
 
 `@sct`
-
 ```{r}
 ex() %>% check_function("head") %>% {
     check_arg(., "x") %>% check_equal()
@@ -78,14 +72,12 @@ success_msg("Awesome, now you have a good sense of what this data looks like!")
 ## Creating a cross tab
 
 ```yaml
-type: NormalExercise 
-xp: 100 
-key: df6afff9dc   
+type: NormalExercise
+key: df6afff9dc
+xp: 100
 ```
 
-
 To help you analyze this data, you can use a cross tabulation. Cross tabulation (or contingency table) is a table that quickly summarizes categorical data. For instance, in the resume data, we have a `sex` variable that tells us whether or not the fictitious resume had a male or a female name.
-
 
 `@instructions`
 - Using the `table` function, create a cross tab of the `sex` and `call` variables in the resume data and assign this table to `sex.call.tab`
@@ -95,13 +87,11 @@ To help you analyze this data, you can use a cross tabulation. Cross tabulation 
 Take a look at Section 2.1 of Imai if you are struggling here. Also, use the `ls()` function to see what objects are in the workspace.
 
 `@pre_exercise_code`
-
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
 
 `@sample_code`
-
 ```{r}
 ## create a contingency table of sex and call
 sex.call.tab <- 
@@ -111,7 +101,6 @@ sex.call.tab <-
 ```
 
 `@solution`
-
 ```{r}
 ## create a contingency table of sex and call
 sex.call.tab <- table(sex = resume$sex, call = resume$call)
@@ -121,7 +110,6 @@ sex.call.tab
 ```
 
 `@sct`
-
 ```{r}
 ex() %>% check_function("table") %>% {
     check_arg(., "sex") %>% check_equal()
@@ -136,14 +124,12 @@ success_msg("Awesome, that cross tab looks great!")
 ## Logical values
 
 ```yaml
-type: NormalExercise 
-xp: 100 
-key: ab7736f28d   
+type: NormalExercise
+key: ab7736f28d
+xp: 100
 ```
 
-
 Pretty soon, you'll be doing more complicated subsetting in R. To do this, it's helpful to understand a special type of object in R: the **logical**. There are two values associated with this type of object: `TRUE` and `FALSE` (where the uppercase is very important).
-
 
 `@instructions`
 - Create a vector called `x` that contains two `TRUE` values and two `FALSE` values in that order. 
@@ -154,14 +140,11 @@ Pretty soon, you'll be doing more complicated subsetting in R. To do this, it's 
 Take a look at Section 2.2.1 of QSS for more help with logicals.
 
 `@pre_exercise_code`
-
 ```{r}
 
 ```
 
-
 `@sample_code`
-
 ```{r}
 ## creat a vector with two TRUE values and two FALSE values
 x <- 
@@ -174,7 +157,6 @@ x <-
 ```
 
 `@solution`
-
 ```{r}
 ## creat a vector with two TRUE values and two FALSE values
 x <- c(TRUE, TRUE, FALSE, FALSE)
@@ -187,7 +169,6 @@ mean(x)
 ```
 
 `@sct`
-
 ```{r}
 ex() %>% check_object("x") %>% check_equal() 
 ex() %>% check_function("sum") %>% {
@@ -204,11 +185,10 @@ success_msg("Ok, great, you're logic is stone cold.")
 ## Comparing logicals
 
 ```yaml
-type: MultipleChoiceExercise 
-xp: 50 
-key: 8dabfe675f   
+type: MultipleChoiceExercise
+key: 8dabfe675f
+xp: 50
 ```
-
 
 We often combine logical statements using AND (`&`) and OR (`|`) in R. For AND statements, both expressions have to be true for the whole expression to be true:
 - `TRUE & FALSE`, `FALSE & TRUE`, and `FALSE & FALSE` are `FALSE`
@@ -221,7 +201,6 @@ What does the following evaluate to?
 
     (TRUE | FALSE) & TRUE
 
-
 `@instructions`
 - `TRUE`
 - `FALSE`
@@ -231,14 +210,11 @@ What does the following evaluate to?
 Evaluate the expression from left to right
 
 `@pre_exercise_code`
-
 ```{r}
 
 ```
 
-
 `@sct`
-
 ```{r}
 msg1 <- "Correct!"
 msg2 <- "Incorrect. (TRUE | FALSE) evaluates to TRUE and then the expression becomes TRUE & TRUE which is TRUE."
@@ -247,15 +223,14 @@ ex() %>% check_mc(correct = 1,
                   feedback_msgs = c(msg1, msg2, msg3))
 ```
 
-
 ---
 
 ## Comparing objects
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 2423174d57
+xp: 100
 ```
 
 There are several *relational operators* that allow us to compare objects in R. The most useful of these are the following:
@@ -263,17 +238,18 @@ There are several *relational operators* that allow us to compare objects in R. 
 - `<` less than, `<=` less than or equal to
 - `==` equal to
 - `!=` not equal to
-When we use these to compare two objects in R, we end us with a logical object. You can also compare a vector to a particular number. 
+When we use these to compare two objects in R, we end us with a logical object. You can also compare a vector to a particular number.
 
 `@instructions`
 - Test if 10 is greater than 5. 
 - Test which values in the vector `x` is greater than or equal to 0.
 
 `@hint`
-See Section 2.2.2 of QSS for more information on relationals. 
+See Section 2.2.2 of QSS for more information on relationals.
 
 `@pre_exercise_code`
 ```{r}
+
 ```
 
 `@sample_code`
@@ -312,17 +288,15 @@ success_msg("Good job!")
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: dc881eb5bf
+xp: 100
 ```
-
 
 In this exercise, you have the ages of a sample of 15 people, stored in the `ages` vector. We can use these relational operators to create a logical vector which indicates which ages fall within a specific range. In particular, we can find out which respondents are college-aged (18-22)
 
 `@instructions`
 - Create a logical vector, called `college.aged`, which indicates which observations in `ages` are greater than or equal to 18 and less than or equal to 22. Be sure to use parentheses to separate out the two logical statements. 
 - Take the sum of the `college.aged` vector to determine how many 18-22 year olds there are in the sample.
-
 
 `@hint`
 Remember that `>=` is greater than or equal to and `<=` is less than or equal to.
@@ -357,7 +331,6 @@ college.aged <- (ages >= 18) & (ages <= 22)
 sum(college.aged)
 ```
 
-
 `@sct`
 ```{r}
 ex() %>% check_object("college.aged") %>% check_equal() 
@@ -373,18 +346,18 @@ success_msg("Excellent job! This skill will be insanely useful as you move forwa
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 1675a99a66
+xp: 100
 ```
 
-In the last exercise, you used logical statements to create a vector that told us whether each entry in the `ages` vector is in the 18-22 year-old range. We can now use that information to figure out what the actual ages of the respondents in that range are. 
+In the last exercise, you used logical statements to create a vector that told us whether each entry in the `ages` vector is in the 18-22 year-old range. We can now use that information to figure out what the actual ages of the respondents in that range are.
 
 `@instructions`
 - Use the brackets and the `college.aged` logical vector that has already been created to subset `ages` to the value only between 18 and 22, inclusive. 
-- Use the `mean` function to calculate the average age of the respondents in this subset. 
+- Use the `mean` function to calculate the average age of the respondents in this subset.
 
 `@hint`
-See QSS Section 2.2.3 on Subsetting for more information on this type of problem. 
+See QSS Section 2.2.3 on Subsetting for more information on this type of problem.
 
 `@pre_exercise_code`
 ```{r}
@@ -431,27 +404,24 @@ success_msg("Ok, great job!")
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 5c0ff0cf18
+xp: 100
 ```
 
 You can use the same logical statements you have been using to create subsets of a data frame. These can often be helpful because we'll want to calculate various quantities of interest for different subsets of the data. For this exercise, we will use the `resume` data frame made up of the variables `firstname`, `sex`,       `race`, and `call`.
 
-
 `@instructions`
 - Use the `subset` function to create a subset of the `resume` data frame that is only female names that sound white. Save this subset as `resume.wf`
 - Use the `head` function to print out the first 6 lines of this subset. 
-- Calculate the mean of the `call` variable in this subset. 
-
+- Calculate the mean of the `call` variable in this subset.
 
 `@hint`
-Section 2.2.3 of QSS has more information about how to subset with conditional statements. 
+Section 2.2.3 of QSS has more information about how to subset with conditional statements.
 
 `@pre_exercise_code`
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -488,26 +458,25 @@ ex() %>% check_function("mean") %>% {
 }
 success_msg("You are rocking this data stuff!")
 ```
+
 ---
 
 ## Comparing means across treatment conditions
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: e2c2b5db47
+xp: 100
 ```
 
-
-You can use the same ideas as in the last step to create a different subset of the data corresponding to white-sounding female names. Then, you can compare the average callback for the white-female names to the average callback for the black-female names. This will give you a sense of how the employer callback rate varies by racial group of the applicant for females. 
+You can use the same ideas as in the last step to create a different subset of the data corresponding to white-sounding female names. Then, you can compare the average callback for the white-female names to the average callback for the black-female names. This will give you a sense of how the employer callback rate varies by racial group of the applicant for females.
 
 `@instructions`
 - Create a subset of the `resume` data for white-sounding female names. 
-- Print the difference in means between the `call` variable in the white-sounding name subset and the black-sounding name subset. 
-
+- Print the difference in means between the `call` variable in the white-sounding name subset and the black-sounding name subset.
 
 `@hint`
-Remember that you can use the `-` operator to take the difference between two objects. 
+Remember that you can use the `-` operator to take the difference between two objects.
 
 `@pre_exercise_code`
 ```{r}
@@ -544,17 +513,18 @@ ex() %>% check_object("resume.bf") %>% check_equal()
 ex() %>% check_output_expr("mean(resume.wf$call) - mean(resume.bf$call)")
 success_msg("You just analyzed an experiment! Way to go!")
 ```
+
 ---
 
-## Using simple conditional statements 
+## Using simple conditional statements
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: bfa582b1b6
+xp: 100
 ```
 
-What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$firstname == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE. 
+What if we wanted to create a new vector that depends on whether a statement is true or false? For example, suppose you wanted to create an indicator variable for whether or not a specific resume had the name "Carrie." From, the last few examples, you know that `resume$firstname == "Carrie"` will give you a vector of `TRUE` and `FALSE` values based on whether or not the name for that unit is "Carrie." We can then use this to get create a new variable using the `ifelse(X, Y, Z)` command. This command takes a logical vector as `X` and returns a new vector of the same length as `X` that has the value `Y` if that value in `X` is TRUE and `Z` if that value in `X` is FALSE.
 
 `@instructions`
 - Use the `ifelse` function to create a new variable called `carrie` that is 1 if the resume name (`firstname`) is `"Carrie"` and 0 otherwise. 
@@ -563,12 +533,10 @@ What if we wanted to create a new vector that depends on whether a statement is 
 `@hint`
 See Section 2.2.4 of QSS for help with `ifelse` and simple conditional statements.
 
-
 `@pre_exercise_code`
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -601,8 +569,8 @@ success_msg("Awesome job!")
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 91707d6e25
+xp: 100
 ```
 
 You have seen that creating subsets can be helpful for calculating different quantities or statistics for specific subgroups in the data. When there is more than 1 or 2 subgroups of interest, however, this can be a cumbersome process. For that reason, it's helpful to know about factor variables. Basically, a factor variable is a categorical variable that takes a finite number of distinct values. 
@@ -611,21 +579,20 @@ Any variable can be turned into a factor by calling the `as.factor()` function l
 
     mydata$myvar <- as.factor(mydata$myvar)
 
-This will take the variable `myvar` and create a factor variable with levels that are observed in that variable. Most often, you will convert a character variable to a factor. 
+This will take the variable `myvar` and create a factor variable with levels that are observed in that variable. Most often, you will convert a character variable to a factor.
 
 `@instructions`
 - Finish the code below that creates the `type` character variable. Fill in the last values of `race` and `sex` and add the label `WhiteMale` to this last type. 
 - Convert the `resume$type` variable to a factor variable using `as.factor()`.
 
 `@hint`
-Look at Section 2.2.5 of QSS for more information on how to work with factors. 
+Look at Section 2.2.5 of QSS for more information on how to work with factors.
 
 `@pre_exercise_code`
 ```{r}
 resume <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/38c2c61fdfeb49d7210c008970d2d280a03715fd/resume.csv")
 resume$carrie <- ifelse(resume$firstname == "Carrie", 1, 0)
 ```
-
 
 `@sample_code`
 ```{r}
@@ -660,14 +627,15 @@ resume$type <- as.factor(resume$type)
 ex() %>% check_object("resume") %>% check_equal()
 success_msg("Fantastic, you got that factor loaded up and ready to go. Now, let's see what you can do with it.")
 ```
+
 ---
 
-## Using factors 
+## Using factors
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: d8bc3c088b
+xp: 100
 ```
 
 Imagine that you wanted to calculate the average callback for each level of `type`. You could create a subset for each level of `type` and then use `mean` on each one of those subsets. But that would take 8 lines of code! 
@@ -676,13 +644,12 @@ A more efficient way to do this task would be to use the `tapply(X, INDEX, FUN)`
 
     tapply(grades$exam, grades$section, mean)
 
-
 `@instructions`
 - Use the `table()` function on the `type` variable to see how many fictitious applications were sent out with each type of name. 
-- Use the `tapply()` function to calculate the `mean` of the `call` variable in each level of `type`. 
+- Use the `tapply()` function to calculate the `mean` of the `call` variable in each level of `type`.
 
 `@hint`
-See Section 2.2.5 of QSS for help with the `tapply` function. 
+See Section 2.2.5 of QSS for help with the `tapply` function.
 
 `@pre_exercise_code`
 ```{r}
@@ -697,7 +664,6 @@ resume$type[resume$race == "white" & resume$sex == "male"] <- "WhiteMale"
 ## turn the character vector into a factor
 resume$type <- as.factor(resume$type)
 ```
-
 
 `@sample_code`
 ```{r}

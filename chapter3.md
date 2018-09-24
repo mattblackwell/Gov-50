@@ -1,33 +1,30 @@
 ---
-  title: "Measurement"
-  description: "Using R to help measure different social science concepts"
+title: Measurement
+description: 'Using R to help measure different social science concepts'
 ---
-
 
 ## Small class size data
 
 ```yaml
 type: NormalExercise
-xp: 50
 key: c6d39e7f00
+xp: 100
 ```
 
-In this chapter, you'll analyze data from the STAR project, which is a four-year randomized trial on the effectiveness of small class sizes on education performance. The `star` data frame as been loaded into your space so that you can play around with it a bit. 
+In this chapter, you'll analyze data from the STAR project, which is a four-year randomized trial on the effectiveness of small class sizes on education performance. The `star` data frame as been loaded into your space so that you can play around with it a bit.
 
 `@instructions`
 - Use the `head` function on the `star` to see what the data looks like.
 - Use the `dim` function on the `star` to see what the dimensions of the data look like. 
-- Use the `summary` function on the `star` to get a sense for each variable. 
+- Use the `summary` function on the `star` to get a sense for each variable.
 
 `@hint`
-See Section 2.1 of QSS for more help with these functions. 
-
+See Section 2.1 of QSS for more help with these functions.
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -73,14 +70,13 @@ success_msg("Great job, let's get to work on this data!")
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 0c0932b9a1
+xp: 100
 ```
 
 You probably noticed that there were some `NA` values in the data when you used the `head()` function. These are **missing values**, where the value for that unit on that variable is missing or unknown. These values pose problems when we are trying to calculate quantities of interest like means or medians because R doesn't know how to handle them. 
 
-The first tool in your toolkit for missing data is the `is.na()` function. When you pass a vector `x` to `is.na(x)`, it will return a vector of the same length where each entry is `TRUE` if the value of `x` is `NA` and `FALSE` otherwise. Using logicals, you can easily get the opposite vector `!is.na(x)` which is `TRUE` when `x` is observed and `FALSE` when `x` is missing. 
-
+The first tool in your toolkit for missing data is the `is.na()` function. When you pass a vector `x` to `is.na(x)`, it will return a vector of the same length where each entry is `TRUE` if the value of `x` is `NA` and `FALSE` otherwise. Using logicals, you can easily get the opposite vector `!is.na(x)` which is `TRUE` when `x` is observed and `FALSE` when `x` is missing.
 
 `@instructions`
 - Use the `is.na` and `head` functions to show whether or not the first 6 values of the `g4math` variable from the `star` data frame are missing.
@@ -88,13 +84,12 @@ The first tool in your toolkit for missing data is the `is.na()` function. When 
 - Use the `is.na` and `mean` functions to show what proportion of the `g4math` variable is missing.
 
 `@hint`
-See Section 3.2 of QSS for more information on handling missing values. 
+See Section 3.2 of QSS for more information on handling missing values.
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -130,29 +125,27 @@ success_msg("Great job!")
 
 ---
 
-## Calculating means in the fact of missing data 
+## Calculating means in the fact of missing data
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 7576d1a23f
+xp: 100
 ```
 
-Missing values makes it difficult to calculate numerical quantities of interest like the mean, median, standard deviation, or variance. Many of these function will simply return `NA` if there is a single missing value in the vector. We can instruct many function to ignore the missing values and do their calculation on just the observed data by using the `na.rm = TRUE` argument. For instance, suppose we have `x <- c(NA, 1,2,3)`, then `mean(x)` will return `NA`, but `mean(x, na.rm = TRUE)` will return `2`. 
-
+Missing values makes it difficult to calculate numerical quantities of interest like the mean, median, standard deviation, or variance. Many of these function will simply return `NA` if there is a single missing value in the vector. We can instruct many function to ignore the missing values and do their calculation on just the observed data by using the `na.rm = TRUE` argument. For instance, suppose we have `x <- c(NA, 1,2,3)`, then `mean(x)` will return `NA`, but `mean(x, na.rm = TRUE)` will return `2`.
 
 `@instructions`
 - Try to calculate the `mean` of the `g4math` variable in the `star` data frame without setting `na.rm`.
 - Try to calculate the `mean` of the `g4math` variable when setting `na.rm = TRUE`.
 
 `@hint`
-See Section 3.2 of QSS for more information on handling missing values. 
+See Section 3.2 of QSS for more information on handling missing values.
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -181,14 +174,15 @@ ex() %>% check_function("mean", index = 2) %>% {
 }
 success_msg("Great job! Now that you are a missing data expert, let's learn how to make some visualizations.")
 ```
+
 ---
 
 ## Visualizing data: the barplot
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: c3e8e0975f
+xp: 100
 ```
 
 The **barplot** is a useful way to visualize a categorical or factor variable. In this exercise, you are going to visualize the `classtype` variable from the `star` data frame, which can take on the following values:
@@ -198,7 +192,7 @@ The **barplot** is a useful way to visualize a categorical or factor variable. I
 
 `@instructions`
 - Use the `table` function to create a vector of counts `classcounts` for each category of the `classtype` in the `star` data. 
-- Pass this `classcounts` vector to the `barplot` function. 
+- Pass this `classcounts` vector to the `barplot` function.
 
 `@hint`
 See Section 3.3.1 of QSS for more information on barplots.
@@ -207,7 +201,6 @@ See Section 3.3.1 of QSS for more information on barplots.
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -238,20 +231,20 @@ success_msg("Awesome. The graph is looking a little unhelpful, though. Let's spr
 
 ---
 
-## Making the barplot readable 
+## Making the barplot readable
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 420aefc18a
+xp: 100
 ```
 
-The default barplot usually isn't all that readable. 
+The default barplot usually isn't all that readable.
 
 `@instructions`
 - Create a vector of character labels called `classnames` that has the values `"Small class"` (for 1), `"Regular class"` (for 2), and `"Regular class with aid"` (for 3).
 - Call `barplot` with the heights as before, but now passing `classnames` to the `names.arg` argument and use `"Number of students"` as the `ylab` argument.
-- Make sure to separate the arguments in the barplot call with commas. 
+- Make sure to separate the arguments in the barplot call with commas.
 
 `@hint`
 See Section 3.3.1 of QSS for more information on barplots.
@@ -260,7 +253,6 @@ See Section 3.3.1 of QSS for more information on barplots.
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -299,16 +291,15 @@ success_msg("Great job, that barplot looks a ton better.")
 
 ---
 
-## Histograms 
+## Histograms
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: ed0cfe6a6f
+xp: 100
 ```
 
-For quantitative (numerical) variables, the barplot won't work because there are too many unique values. In this case, you will often use a histogram to visualize the a numerical variable. 
-
+For quantitative (numerical) variables, the barplot won't work because there are too many unique values. In this case, you will often use a histogram to visualize the a numerical variable.
 
 `@instructions`
 - Use the `hist` function to create a histogram for the `g4math` variable in the `star` data frame. 
@@ -323,7 +314,6 @@ See Section 3.3.2 of QSS for more information on histograms.
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -352,19 +342,18 @@ success_msg("Great job, though the graph is a bit spartan. Let's make it more re
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 18b2067b3f
+xp: 100
 ```
 
 There are several arguments you can pass to `hist` that will improve its readability:
 - `main`: a character string that prints a main title for the plot. 
 - `xlab`, `ylab`: character strings that set the labels for the x (horizontal) and y (vertical) axes 
-- `xlim`, `ylim`: numeric vectors of length 2 to specify the interval for the x and y axes. 
+- `xlim`, `ylim`: numeric vectors of length 2 to specify the interval for the x and y axes.
 
 `@instructions`
 - Create a histogram (with `freq = FALSE`) where you (a) set the y-axis to be between `0` and `0.015` using the `ylim` argument, (b) include an informative x-axis label using the `xlab` argument, and (c) include a title for the plot using the `main` argument. 
-- Make sure to separate the arguments in function calls with commas. 
-
+- Make sure to separate the arguments in function calls with commas.
 
 `@hint`
 See Section 3.3.2 of QSS for more information on histograms.
@@ -373,7 +362,6 @@ See Section 3.3.2 of QSS for more information on histograms.
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -401,31 +389,28 @@ success_msg("Great job!")
 
 ---
 
-## Adding lines and text to a plot 
+## Adding lines and text to a plot
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 4ae587366b
+xp: 100
 ```
 
-We'll often want to add more information to a plot to make it even more readable. You can do that with commands that add to the current plot, such as `abline` and `text`. `abline(v=1)` will add a vertical line to the plot at the specified value (`1` in this example). `text(x,y,z)` adds a character string `z` centered at point on the (`x`, `y`) on the plot. You can use the axis labels to see where you might want to add these parts of the plot. 
-
+We'll often want to add more information to a plot to make it even more readable. You can do that with commands that add to the current plot, such as `abline` and `text`. `abline(v=1)` will add a vertical line to the plot at the specified value (`1` in this example). `text(x,y,z)` adds a character string `z` centered at point on the (`x`, `y`) on the plot. You can use the axis labels to see where you might want to add these parts of the plot.
 
 `@instructions`
 - Use the `abline` function to add a vertical line at the mean of the `g4math` variable from the `star` data. Remember, there are missing values in that variable so be sure to use the `na.rm = TRUE` argument to drop them. 
 - Use the `text` function to add the string `Average Score` to the plot at the point (750, 0.014). 
-- Make sure to separate the arguments in function calls with commas. 
+- Make sure to separate the arguments in function calls with commas.
 
 `@hint`
 See Section 3.3.2 of QSS for more information on histograms.
-
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -464,29 +449,28 @@ success_msg("Great job!")
 
 ---
 
-## Boxplots  
+## Boxplots
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: b9e749a845
+xp: 100
 ```
 
 Boxplots are useful tools to visualize how the distribution of a continuous variable changes across levels of a categorical variable. There are several ways to specify a boxplot, but one of the most useful is with what R calls a formula:
     boxplot(numvar ~ catvar, data = mydata)
-Here, the first argument are the two variables of interest separated by the tilde character `~`. On the left hand side is the numerical variable that you are investigating and on the right hand side is the categorical variable we want to subset by. The `data` argument tells the function where the function can find these variables (that is, in what data frame are these variables). 
+Here, the first argument are the two variables of interest separated by the tilde character `~`. On the left hand side is the numerical variable that you are investigating and on the right hand side is the categorical variable we want to subset by. The `data` argument tells the function where the function can find these variables (that is, in what data frame are these variables).
 
 `@instructions`
-- Call the `boxplot` function using the `g4math` is the numerical variable and `classtype` is the categorical variable. Pass the `star` data frame to the `data` argument. Include an informative y-axis label with `ylab` argument. Finally, pass the `classnames` vector to the `names` argument to place labels on the boxplots. 
+- Call the `boxplot` function using the `g4math` is the numerical variable and `classtype` is the categorical variable. Pass the `star` data frame to the `data` argument. Include an informative y-axis label with `ylab` argument. Finally, pass the `classnames` vector to the `names` argument to place labels on the boxplots.
 
 `@hint`
-See Section 3.3.3 of QSS for more information on boxplots. 
+See Section 3.3.3 of QSS for more information on boxplots.
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -513,31 +497,30 @@ ex() %>% check_function("boxplot") %>% {
 }
 success_msg("Great job!")
 ```
+
 ---
 
-## Scatter plots 
+## Scatter plots
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 7d90818f54
+xp: 100
 ```
 
-Now you'll think more about to measure bivariate relationships---that is, the relationship between two variables. The `plot(x,y)` function will take two vectors and plot a series of points on a two-dimensional grid where the x-coordinates come from the `x` vector and the y-coordinates come from the `y` vector. For instance, `plot(x = c(1,2), y = c(3,4))` will plot two points, one at (1,3) and the other at (2,4). You will use this plot to explore the relationship between math and reading test scores in the `star` data. 
+Now you'll think more about to measure bivariate relationships---that is, the relationship between two variables. The `plot(x,y)` function will take two vectors and plot a series of points on a two-dimensional grid where the x-coordinates come from the `x` vector and the y-coordinates come from the `y` vector. For instance, `plot(x = c(1,2), y = c(3,4))` will plot two points, one at (1,3) and the other at (2,4). You will use this plot to explore the relationship between math and reading test scores in the `star` data.
 
 `@instructions`
 - Create a scatter plot using the `plot` function with `g4math` on the x-axis and `g4reading` on the y-axis, both from the `star` data. 
-- Remember you can access a particular variable in a data frame using the `$` symbol. 
+- Remember you can access a particular variable in a data frame using the `$` symbol.
 
 `@hint`
-See Section 3.6.1 of QSS for help with scatter plots. 
-
+See Section 3.6.1 of QSS for help with scatter plots.
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -559,14 +542,15 @@ ex() %>% check_function("plot") %>% {
 }
 success_msg("Ok, great plot. Let's make a bit more polished.")
 ```
+
 ---
 
-## Plotting two sets of points 
+## Plotting two sets of points
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 25875de2e9
+xp: 100
 ```
 
 Often we want to plot certain pints differently than others. For instance, maybe you want to see how the relationship between math and reading scores differs between students in small classes versus those not in small classes. To do this, we can use subsets and the `points` function.
@@ -580,13 +564,12 @@ After using the `plot` function, you can add more points to the current plot by 
 - Remember that you can use `x == y` to test if `x` is equal to `y` and `x != y` to test if `x` is not equal to `y`
 
 `@hint`
-See Section 3.6.1 of QSS for help with scatter plots. 
+See Section 3.6.1 of QSS for help with scatter plots.
 
 `@pre_exercise_code`
 ```{r}
 star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datasets/04251b0be6529e4b5f636fb5666f87cf3ad10635/STAR.csv")
 ```
-
 
 `@sample_code`
 ```{r}
@@ -637,22 +620,21 @@ success_msg("That looks great! ")
 
 ---
 
-## Finalizing your scatter plot 
+## Finalizing your scatter plot
 
 ```yaml
 type: NormalExercise
-xp: 100
 key: 6effc5be0f
+xp: 100
 ```
 
-The scatter plot is looking very good, but it could use a little bit of polish. Let's add axis labels and a title. Remember that you can add these to the plot via the `xlab`, `ylab`, and `main`. Also, it's important to note that you can only add these to the initial `plot` function; adding them to the `points` or `text` or `abline` functions won't have any effect. 
-
+The scatter plot is looking very good, but it could use a little bit of polish. Let's add axis labels and a title. Remember that you can add these to the plot via the `xlab`, `ylab`, and `main`. Also, it's important to note that you can only add these to the initial `plot` function; adding them to the `points` or `text` or `abline` functions won't have any effect.
 
 `@instructions`
-- Take the current plot and add the following arguments: `xlab`, `ylab`, and `main`. Make them informative. 
+- Take the current plot and add the following arguments: `xlab`, `ylab`, and `main`. Make them informative.
 
 `@hint`
-See Section 3.6.1 of QSS for help with scatter plots. 
+See Section 3.6.1 of QSS for help with scatter plots.
 
 `@pre_exercise_code`
 ```{r}
@@ -660,7 +642,6 @@ star <- read.csv("https://assets.datacamp.com/production/repositories/3045/datas
 small.class <- subset(star, classtype == 1)
 reg.class <- subset(star, classtype != 1)
 ```
-
 
 `@sample_code`
 ```{r}
