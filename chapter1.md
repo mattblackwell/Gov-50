@@ -74,6 +74,11 @@ You can save anything in R to an object. This is handy if you want to reuse some
 `@hint`
 Place the difference you want after the `<-` sign. See Section 1.3.2 of Imai.
 
+`@pre_exercise_code`
+```{r}
+
+```
+
 `@sample_code`
 ```{r}
 ## assign the difference here
@@ -120,6 +125,11 @@ A lot of the time we'll work with numbers in R, but we will also want to use a l
 
 `@hint`
 Be sure to use quotes around the text you are trying to save. See Section 1.3.2 in Imai.
+
+`@pre_exercise_code`
+```{r}
+
+```
 
 `@sample_code`
 ```{r}
@@ -218,6 +228,11 @@ Print the `world.pop` data by simply typing it into a line of code.
 
 `@hint`
 Just type the name of the vector you want! See Section 1.3.3 (Vectors) of Imai.
+
+`@pre_exercise_code`
+```{r}
+
+```
 
 `@sample_code`
 ```{r}

@@ -201,7 +201,7 @@ What does the following evaluate to?
 
     (TRUE | FALSE) & TRUE
 
-`@instructions`
+`@possible_answers`
 - `TRUE`
 - `FALSE`
 - `NA`
